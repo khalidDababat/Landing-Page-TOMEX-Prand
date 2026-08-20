@@ -1,0 +1,23 @@
+.careers {
+  background-color: $color-page-alt;
+  padding-block: 7.5rem 6rem;
+
+  @include down('tablet') {
+    padding-block: $spacing-3xl $spacing-2xl;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-top: $spacing-3xl;
+
+  @include down('tablet') {
+    margin-top: $spacing-2xl;
+  }
+}

@@ -1,0 +1,190 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: $radius-md;
+  background-color: $color-card-navy;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+}
+
+.category {
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: $color-mint;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+}
+
+.description {
+  @include body-text($font-size-md);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-xs;
+}
+
+.link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: $spacing-xs;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: $color-mint;
+  font-size: $font-size-md;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.linkIcon {
+  font-size: 0.95rem;
+}
+
+// ---- Variant: copy overlaid on the image -------------------
+
+.overlay {
+  .overlayMedia {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .media {
+    aspect-ratio: 759 / 384;
+  }
+
+  .body {
+    position: absolute;
+    inset-inline: 0;
+    bottom: $spacing-xl;
+    padding-inline: $spacing-xl;
+    gap: $spacing-xs;
+  }
+
+  .title {
+    font-size: 1.625rem;
+  }
+
+  .description {
+    max-width: 520px;
+  }
+
+  /**
+   * On small screens the image is too short to hold the overlaid copy, so the
+   * card falls back to the stacked treatment.
+   */
+  @include down('tablet') {
+    .body {
+      position: static;
+      padding: $spacing-lg;
+    }
+
+    .scrim,
+    .overlayFooter {
+      display: none;
+    }
+  }
+}
+
+/** Lighter panel below the image, as shown in the reference. */
+.overlayFooter {
+  flex: 1 1 auto;
+  min-height: 60px;
+  background-color: $color-badge;
+}
+
+/** Gradient so the overlaid copy stays legible on the photo. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($color-navy, 0) 8%,
+    rgba($color-navy, 0.5) 28%,
+    rgba($color-navy, 0.78) 50%,
+    rgba($color-navy, 0.82) 100%
+  );
+}
+
+// ---- Variant: image above the copy -------------------------
+
+.stacked {
+  .media {
+    aspect-ratio: 368 / 258;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+  }
+
+  .body {
+    padding-block: $spacing-lg $spacing-xl;
+  }
+}
+
+// ---- Variant: copy beside the image ------------------------
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+
+  .title {
+    font-size: 1.625rem;
+  }
+
+  .body {
+    justify-content: center;
+    padding: 3.75rem 3rem;
+  }
+
+  .description {
+    max-width: 440px;
+  }
+
+  .image {
+    position: absolute;
+    inset: 0;
+  }
+
+  @include down('tablet') {
+    grid-template-columns: minmax(0, 1fr);
+
+    .media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      order: -1;
+    }
+
+    .body {
+      padding: $spacing-lg;
+    }
+  }
+}

@@ -1,0 +1,99 @@
+.footer {
+  margin-top: auto;
+  background-color: $color-footer;
+  border-top: 1px solid $color-border;
+}
+
+.inner {
+  @include container;
+  padding-block: 5.25rem $spacing-xl;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1.14fr 1.12fr 1fr;
+  gap: $spacing-2xl;
+  align-items: start;
+
+  @include down('laptop') {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+  }
+
+  @include down('tablet') {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $spacing-xl;
+  }
+}
+
+.brandColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  max-width: 320px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logoMark {
+  width: 20px;
+  height: 20px;
+}
+
+.logoText {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.06em;
+  color: $color-white;
+}
+
+.description {
+  @include body-text($font-size-md);
+}
+
+.navColumn,
+.connectColumn {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.columnTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.navLink {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+
+  &:hover {
+    color: $color-mint;
+  }
+}
+
+.connectTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+}
+
+.copyright {
+  margin-top: $spacing-4xl;
+  text-align: center;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-subtle;
+}

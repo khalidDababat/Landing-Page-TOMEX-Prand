@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+
+  @include down('tablet') {
+    font-size: $font-size-xl;
+  }
+}
+
+.accent {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: $radius-pill;
+  background-color: $color-mint;
+}
+
+.description {
+  max-width: 640px;
+  @include body-text($font-size-base);
+}

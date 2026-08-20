@@ -1,0 +1,65 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding: 0.8rem 1.375rem;
+  border: 1px solid transparent;
+  border-radius: $radius-sm;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast,
+    transform $transition-fast;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.primary {
+  background-color: $color-mint;
+  color: $color-navy;
+
+  &:hover:not(:disabled) {
+    background-color: color-mix(in srgb, $color-mint 88%, $color-white);
+  }
+}
+
+.outline {
+  background-color: transparent;
+  border-color: $color-border-strong;
+  color: $color-text;
+
+  &:hover:not(:disabled) {
+    border-color: $color-mint;
+    color: $color-mint;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/** Mint outline used by "Apply Now". */
+.accent {
+  background-color: transparent;
+  border-color: $color-mint;
+  color: $color-mint;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($color-mint, 0.12);
+  }
+}

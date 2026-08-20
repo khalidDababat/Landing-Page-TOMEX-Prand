@@ -1,0 +1,127 @@
+.about {
+  @include section-spacing;
+}
+
+.inner {
+  @include container;
+}
+
+.cards {
+  @include grid(3, $grid-gap);
+  margin-top: $spacing-3xl;
+
+  @include down('laptop') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include down('tablet') {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: $spacing-2xl;
+  }
+}
+
+.card {
+  @include card-surface;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-xl;
+  transition:
+    border-color $transition-base,
+    transform $transition-base;
+
+  &:hover {
+    border-color: rgba($color-mint, 0.35);
+    transform: translateY(-2px);
+  }
+}
+
+.iconBox {
+  @include flex-center;
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-md;
+  background-color: rgba($color-mint, 0.12);
+  color: $color-mint;
+  font-size: 1.5rem;
+}
+
+.icon {
+  display: block;
+}
+
+.cardTitle {
+  margin-top: $spacing-xl;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+}
+
+.cardDescription {
+  margin-top: $spacing-md;
+  @include body-text($font-size-base, $font-weight-semibold, 1.85);
+}
+
+// ---- Vision & Mission --------------------------------------
+
+.pillars {
+  @include grid(2, $grid-gap);
+  margin-top: $spacing-3xl;
+
+  @include down('tablet') {
+    margin-top: $spacing-2xl;
+  }
+}
+
+.pillar {
+  position: relative;
+  overflow: hidden;
+  padding: $spacing-3xl 4rem;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-surface-raised;
+
+  @include down('tablet') {
+    padding: $spacing-xl;
+  }
+}
+
+/** Soft mint glow, mirrored between the two cards as in the reference. */
+.vision::after,
+.mission::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba($color-mint, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vision::after {
+  top: -40px;
+  right: 40px;
+}
+
+.mission::after {
+  bottom: -40px;
+  left: -20px;
+}
+
+.pillarTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+}
+
+.pillarIcon {
+  font-size: 1.25rem;
+  color: $color-mint;
+}
+
+.pillarDescription {
+  margin-top: $spacing-lg;
+  max-width: 430px;
+  @include body-text($font-size-md, $font-weight-semibold, 1.9);
+}

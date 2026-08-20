@@ -1,0 +1,83 @@
+.hero {
+  padding-block: $spacing-2xl $spacing-xl;
+
+  @include down('tablet') {
+    padding-block: $spacing-xl;
+  }
+}
+
+.inner {
+  @include container;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: $spacing-xl;
+  align-items: center;
+
+  @include down('laptop') {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $spacing-xl;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  max-width: 560px;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: $color-text;
+
+  @include down('desktop') {
+    font-size: 2.75rem;
+  }
+
+  @include down('tablet') {
+    font-size: 2.25rem;
+  }
+
+  @include down('mobile') {
+    font-size: 1.875rem;
+  }
+}
+
+.description {
+  margin-top: $spacing-lg;
+  max-width: 530px;
+  @include body-text($font-size-md, $font-weight-semibold, 1.8);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-top: $spacing-2xl;
+
+  @include down('tablet') {
+    margin-top: $spacing-xl;
+  }
+}
+
+.buttonIcon {
+  font-size: 1rem;
+}
+
+.figure {
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 560 / 601;
+  object-fit: cover;
+  border-radius: $radius-2xl;
+
+  @include down('laptop') {
+    aspect-ratio: 16 / 10;
+  }
+}

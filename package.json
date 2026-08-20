@@ -1,0 +1,48 @@
+{
+  "name": "tomex-landing-page",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss,json}\"",
+    "typecheck": "tsc --noEmit ",
+    "server": "json-server src/data/db.json --port 3001",
+    "dev:all": "concurrently -n api,web -c magenta,cyan \"npm:server\" \"npm:dev\""
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.2",
+    "react-toastify": "^11.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/node": "^26.2.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^10.0.5",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.12.0",
+    "json-server": "^1.0.0-beta.15",
+    "postcss": "^8.4.49",
+    "prettier": "^3.3.3",
+    "sass": "^1.80.6",
+    "tailwindcss": "^3.4.14",
+    "typescript": "~5.6.3",
+    "typescript-eslint": "^8.13.0",
+    "vite": "^5.4.10"
+  }
+}

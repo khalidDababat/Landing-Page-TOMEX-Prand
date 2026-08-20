@@ -1,0 +1,20 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-pill;
+  background-color: $color-badge;
+  color: $color-text-muted;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.md {
+  padding: 0.35rem 0.85rem;
+  font-size: $font-size-sm;
+}
+
+.sm {
+  padding: 0.3rem 0.7rem;
+  font-size: $font-size-xs;
+}

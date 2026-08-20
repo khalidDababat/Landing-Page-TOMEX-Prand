@@ -1,0 +1,149 @@
+.contact {
+  @include section-spacing;
+}
+
+.inner {
+  @include container;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 476px);
+  gap: $spacing-3xl;
+  align-items: center;
+  padding: 4rem;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  background-color: $color-surface-raised;
+
+  @include down('laptop') {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $spacing-xl;
+    padding: $spacing-2xl;
+  }
+
+  @include down('tablet') {
+    padding: $spacing-xl;
+  }
+}
+
+// ---- Left column -------------------------------------------
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-text;
+
+  @include down('tablet') {
+    font-size: $font-size-2xl;
+  }
+}
+
+.description {
+  margin-top: $spacing-md;
+  max-width: 470px;
+  @include body-text($font-size-md);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  margin-top: $spacing-2xl;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-md;
+  color: $color-text-muted;
+}
+
+.detailIcon {
+  font-size: 1.25rem;
+  color: $color-mint;
+}
+
+.detailLink:hover {
+  color: $color-mint;
+}
+
+// ---- Form card ---------------------------------------------
+
+.formCard {
+  padding: $spacing-xl;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-page;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.7rem 0.875rem;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-sm;
+  background-color: transparent;
+  font-size: $font-size-md;
+  color: $color-text;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $color-placeholder;
+  }
+
+  &:hover {
+    border-color: rgba($color-mint, 0.4);
+  }
+}
+
+.textarea {
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.error {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: #ff8a8a;
+}
+
+.submit {
+  margin-top: $spacing-md;
+  padding-block: 0.75rem;
+}
+
+.feedback {
+  min-height: 1.25rem;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: #ff8a8a;
+}
+
+.feedbackSuccess {
+  color: $color-mint;
+}

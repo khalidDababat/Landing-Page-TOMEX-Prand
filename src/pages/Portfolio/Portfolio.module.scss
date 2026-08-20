@@ -1,0 +1,75 @@
+.portfolio {
+  background-color: $color-navy;
+  padding-block: 7.5rem 5.75rem;
+
+  @include down('tablet') {
+    padding-block: $spacing-3xl $spacing-2xl;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  text-align: center;
+}
+
+.title {
+  font-size: 3.375rem;
+  font-weight: $font-weight-bold;
+  color: #d1e4ff;
+
+  @include down('tablet') {
+    font-size: 2.25rem;
+  }
+
+  @include down('mobile') {
+    font-size: 1.875rem;
+  }
+}
+
+.description {
+  @include body-text($font-size-md);
+}
+
+/**
+ * Bento grid: the overlay card sits beside the stacked card on the first row,
+ * and the split card spans the full width beneath them.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: 2.06fr 1fr;
+  gap: $grid-gap;
+  margin-top: 8.25rem;
+
+  @include down('laptop') {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: $spacing-3xl;
+  }
+
+  @include down('tablet') {
+    margin-top: $spacing-2xl;
+  }
+}
+
+.overlay,
+.stacked {
+  min-width: 0;
+}
+
+.split {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+/** Cards stretch to a shared row height. */
+.overlay > *,
+.stacked > *,
+.split > * {
+  height: 100%;
+}

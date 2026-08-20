@@ -1,0 +1,108 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  background-color: $color-page;
+  border-bottom: 1px solid $color-border;
+}
+
+.inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-lg;
+  min-height: $header-height;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logoMark {
+  width: 22px;
+  height: 22px;
+}
+
+.logoText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.06em;
+  color: $color-white;
+}
+
+.desktopNav {
+  @include down('laptop') {
+    display: none;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.navLink {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+
+  @include down('desktop') {
+    font-size: $font-size-lg;
+  }
+
+  &:hover {
+    color: $color-mint;
+  }
+}
+
+.menuToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-sm;
+  background-color: transparent;
+  color: $color-white;
+
+  @include down('laptop') {
+    display: inline-flex;
+  }
+}
+
+.mobileNav {
+  display: none;
+  border-top: 1px solid $color-border;
+  background-color: $color-page;
+
+  @include down('laptop') {
+    &.mobileNavOpen {
+      display: block;
+    }
+  }
+}
+
+.mobileNavList {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  padding-block: $spacing-sm;
+}
+
+.mobileNavLink {
+  display: block;
+  padding-block: $spacing-sm;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text;
+
+  &:hover {
+    color: $color-mint;
+  }
+}
