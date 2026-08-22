@@ -21,22 +21,30 @@ const Portfolio = () => {
           loadingLabel="Loading projects"
           emptyMessage="No projects have been published yet."
         >
-          {({ meta, projects }) => (
+          {({ projects }) => (
             <>
               <header className={styles.header}>
                 <h1 className={styles.title} id="portfolio-title">
-                  {meta.title}
+                  Our Portfolio
                 </h1>
-                <p className={styles.description}>{meta.description}</p>
+                <p className={styles.description}>
+                  Showcasing our precision in technology and creative design.
+                </p>
               </header>
 
-              <div className={styles.grid}>
-                {projects.map((project) => (
-                  <div className={styles[project.variant]} key={project.id}>
-                    <ProjectCard project={project} onOpenLink={showComingSoonToast} />
-                  </div>
-                ))}
-              </div>
+              {projects.length === 0 ? (
+                <div className={styles.emptyState}>
+                  <p className={styles.emptyMessage}>No projects exist yet. Check back soon!</p>
+                </div>
+              ) : (
+                <div className={styles.grid}>
+                  {projects.map((project) => (
+                    <div className={styles[project.variant]} key={project.id}>
+                      <ProjectCard project={project} onOpenLink={showComingSoonToast} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </>
           )}
         </AsyncContent>
