@@ -19,18 +19,13 @@ $color-border: rgba($color-white, 0.09);
 $color-border-strong: rgba($color-white, 0.16);
 
 // --- Text ---------------------------------------------------
-$color-text: #eaf1f8;
-$color-text-muted: rgba($color-white, 0.66);
-$color-text-subtle: rgba($color-white, 0.5);
+$color-text: #2dd598;
+$color-text-muted: rgba($color-white, 0.85);
+$color-text-subtle: rgba($color-white, 0.4);
 $color-placeholder: rgba($color-white, 0.34);
 
 // --- Typography ---------------------------------------------
-$font-family-base:
-  'Poppins',
-  'Segoe UI',
-  system-ui,
-  -apple-system,
-  sans-serif;
+$font-family-base: 'Quicksand', 'Segoe UI', system-ui, sans-serif;
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;
@@ -42,7 +37,7 @@ $font-size-sm: 0.8125rem; // 13px
 $font-size-base: 0.875rem; // 14px
 $font-size-md: 0.9375rem; // 15px
 $font-size-lg: 1.25rem; // 20px
-$font-size-xl: 1.5rem; // 24px
+$font-size-xl: 17px; // 17px
 $font-size-2xl: 1.75rem; // 28px
 $font-size-3xl: 2rem; // 32px
 $font-size-4xl: 3.5rem; // 56px — hero headline

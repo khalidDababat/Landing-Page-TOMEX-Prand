@@ -1,6 +1,5 @@
 import AsyncContent from '@/components/common/AsyncContent/AsyncContent';
 import JobCard from '@/components/common/JobCard/JobCard';
-import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import { useFetch } from '@/hooks/useFetch';
 import { fetchCareers } from '@/services/contentService';
 import { showComingSoonToast } from '@/utils/toast';
@@ -22,10 +21,12 @@ const Careers = () => {
           loadingLabel="Loading opportunities"
           emptyMessage="There are no open roles right now."
         >
-          {({ meta, jobs }) => (
+          {({ jobs }) => (
             <>
-              <SectionTitle title={meta.title} description={meta.description} id="careers-title" />
-
+              <header className={styles.header}>
+                <h1 className={styles.title} id="careers-title">Open Opportunities</h1>
+                <p className={styles.description}>Find your role Or Internship in TOMEX.</p>
+              </header>
               <ul className={styles.list}>
                 {jobs.map((job) => (
                   <JobCard key={job.id} job={job} onApply={showComingSoonToast} />

@@ -73,3 +73,21 @@
 .split > * {
   height: 100%;
 }
+
+/** Empty state shown when no projects are available. */
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  border: 1px dashed rgba(209, 228, 255, 0.25);
+  border-radius: 1rem;
+}
+
+.emptyMessage {
+  font-size: $font-size-md;
+  color: rgba(209, 228, 255, 0.55);
+  text-align: center;
+  font-style: italic;
+}

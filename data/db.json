@@ -59,7 +59,7 @@
       {
         "id": "web-software-dev",
         "icon": "laptop",
-        "title": "Web & Software Dev",
+        "title": "Web & Software Development",
         "description": "Custom enterprise applications, robust backend architectures, and intuitive frontend experiences built with modern frameworks.",
         "image": {
           "src": "/images/service-web-software.jpg",
@@ -123,12 +123,6 @@
         "href": "https://www.instagram.com"
       },
       {
-        "id": "linkedin",
-        "icon": "linkedin",
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com"
-      },
-      {
         "id": "youtube",
         "icon": "youtube",
         "label": "YouTube",
@@ -136,13 +130,10 @@
       }
     ]
   },
-  "portfolio": {
-    "title": "Our Portfolio",
-    "description": "Showcasing our precision in technology and creative design."
-  },
+
   "careers": {
     "title": "Open Opportunities",
-    "description": "Find your next role at TOMEX."
+    "description": "Find your role Or Internship in TOMEX."
   },
   "projects": [
     {

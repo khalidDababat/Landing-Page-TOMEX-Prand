@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,scss,json}\"",
     "typecheck": "tsc --noEmit ",
-    "server": "json-server src/data/db.json --port 3001",
+    "server": "json-server data/db.json --port 3001",
     "dev:all": "concurrently -n api,web -c magenta,cyan \"npm:server\" \"npm:dev\""
   },
   "dependencies": {
