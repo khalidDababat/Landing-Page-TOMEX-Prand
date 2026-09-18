@@ -142,12 +142,6 @@ export const footerData: FooterContent = {
       href: 'https://www.instagram.com/tomexcompany/?hl=en',
     },
     {
-      id: 'linkedin',
-      icon: 'linkedin',
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/tomex-tech/',
-    },
-    {
       id: 'youtube',
       icon: 'youtube',
       label: 'YouTube',

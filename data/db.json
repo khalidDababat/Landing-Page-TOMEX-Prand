@@ -123,12 +123,6 @@
         "href": "https://www.instagram.com"
       },
       {
-        "id": "linkedin",
-        "icon": "linkedin",
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com"
-      },
-      {
         "id": "youtube",
         "icon": "youtube",
         "label": "YouTube",
