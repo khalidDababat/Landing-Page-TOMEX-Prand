@@ -1,6 +1,10 @@
-import type { Job, PageMeta, Project } from '@/types';
+import type { Job, PageMeta, Project, ServicesContent } from '@/types';
 
 import { getResource } from './apiClient';
+
+/** Home page services section copy and cards. */
+export const fetchServices = (signal?: AbortSignal): Promise<ServicesContent> =>
+  getResource<ServicesContent>('services', signal);
 
 /** Portfolio page heading plus its project collection. */
 export const fetchPortfolio = async (

@@ -7,12 +7,27 @@ import { iconRegistry } from '@/utils/iconRegistry';
 
 import styles from './Contact.module.scss';
 
-interface ContactProps {
-  content: ContactContent;
-}
+const content: ContactContent = {
+  title: 'Got a Project in Mind?',
+  description:
+    "Let's discuss how our technology and design expertise can accelerate your business objectives.",
+  details: [
+    {
+      id: 'email',
+      icon: 'email',
+      value: 'khaliddababat@gmail.com',
+      href: 'mailto:khaliddababat@gmail.com',
+    },
+    {
+      id: 'location',
+      icon: 'location',
+      value: 'Global Remote',
+    },
+  ],
+};
 
 /** Contact section: project enquiry copy, contact details and the message form. */
-const Contact = ({ content }: ContactProps) => {
+const Contact = () => {
   const { values, errors, status, feedback, handleChange, handleSubmit } = useContactForm();
   const isSubmitting = status === 'submitting';
 

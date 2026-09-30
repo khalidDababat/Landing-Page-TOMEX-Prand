@@ -90,14 +90,6 @@ export interface FooterContent {
   copyright: string;
 }
 
-/** Copy shown on the home page. */
-export interface HomeContent {
-  hero: HeroContent;
-  about: AboutContent;
-  services: ServicesContent;
-  contact: ContactContent;
-}
-
 /** Heading and supporting line shared by the sub pages. */
 export interface PageMeta {
   title: string;
