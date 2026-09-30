@@ -7,6 +7,7 @@ import '@/styles/main.scss';
 import Footer from '@/components/layout/Footer/Footer';
 import Header from '@/components/layout/Header/Header';
 import ScrollManager from '@/components/layout/ScrollManager/ScrollManager';
+import Toast from '@/components/common/Toast/Toast';
 
 const SITE_TITLE = 'TOMEX Technology';
 
@@ -16,9 +17,6 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
-  icons: {
-    icon: 'app/favicon.ico',
-  },
 };
 
 export const viewport: Viewport = {
@@ -27,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => (
-  <html lang="en">
+  <html lang="en" data-scroll-behavior="smooth">
     <head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -44,6 +42,7 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => (
       </ScrollManager>
 
       <Footer />
+      <Toast />
     </body>
   </html>
 );

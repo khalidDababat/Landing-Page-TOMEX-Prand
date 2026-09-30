@@ -23,7 +23,7 @@ const Careers = () => {
           loadingLabel="Loading opportunities"
           emptyMessage="There are no open roles right now."
         >
-          {({ jobs }) => (
+          {(jobs) => (
             <>
               <header className={styles.header}>
                 <h1 className={styles.title} id="careers-title">

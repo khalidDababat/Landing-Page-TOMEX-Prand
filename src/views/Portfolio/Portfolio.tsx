@@ -23,7 +23,7 @@ const Portfolio = () => {
           loadingLabel="Loading projects"
           emptyMessage="No projects have been published yet."
         >
-          {({ projects }) => (
+          {(projects) => (
             <>
               <header className={styles.header}>
                 <h1 className={styles.title} id="portfolio-title">

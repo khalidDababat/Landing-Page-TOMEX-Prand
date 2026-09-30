@@ -1,8 +1,8 @@
 # TOMEX Landing Page
 
 Production-ready TOMEX site built with **Next.js (App Router)**, React, TypeScript, SCSS Modules
-and Material UI icons. Content for the Portfolio and Careers pages is served by **json-server**
-from `data/db.json`.
+and Material UI icons. The Home Services section and the Portfolio and Careers pages are served by **json-server**
+from `data/db.json`; Hero, About, Contact and the footer are static.
 
 ## Tech stack
 
@@ -21,7 +21,7 @@ Component-specific styling lives entirely in `*.module.scss` files, with the des
 
 ## Getting started
 
-The Portfolio and Careers pages read from the API, so run **both processes**:
+The Home (Services), Portfolio and Careers pages read from the API, so run **both processes**:
 
 ```bash
 npm install
@@ -48,12 +48,11 @@ To run them separately, use `npm run server` and `npm run dev` in two terminals.
 
 | Route        | Page      | Content source                         |
 | ------------ | --------- | -------------------------------------- |
-| `/`          | Home      | static `src/data/content.ts`           |
-| `/portfolio` | Portfolio | `portfolio` + `projects` (API)         |
-| `/careers`   | Careers   | `careers` + `jobs` (API)               |
+| `/`          | Home      | static, except Services (`services` API) |
+| `/portfolio` | Portfolio | `projects` (API)                       |
+| `/careers`   | Careers   | `jobs` (API)                           |
 
-Unknown routes render the home page (see `src/app/not-found.tsx`), preserving the original
-catch-all behaviour. In-page links use absolute hashes (`/#about`); `useHashScroll` scrolls to
+Unknown routes render a standalone 404 page (`src/app/not-found.tsx`). In-page links use absolute hashes (`/#about`); `useHashScroll` scrolls to
 the anchored section after navigation, so anchors work from any page.
 
 ## Project structure
@@ -61,7 +60,6 @@ the anchored section after navigation, so anchors work from any page.
 ```
 src/
 ├── app/                App Router routes and root layout (metadata, fonts, global styles)
-├── assets/             Static assets bundled by Next (logo, fonts)
 ├── components/
 │   ├── common/         AsyncContent, Badge, Button, JobCard, ProjectCard,
 │   │                   SectionTitle, SmartLink, SocialLinks, Toast
@@ -72,7 +70,6 @@ src/
 ├── services/           apiClient, contentService, contactService
 ├── types/              Shared TypeScript interfaces
 ├── utils/              Icon registry, navigation links, toast helper, validation
-├── data/content.ts     Static home-page content
 ├── styles/             _variables, _mixins, _global, main
 └── (public/ at repo root)   Imagery, favicon
 ```
@@ -80,45 +77,42 @@ src/
 ## Client vs Server components
 
 Server Components are the default. The `'use client'` boundary is limited to components that
-genuinely need it: `Header` (menu state & scroll lock), `SmartLink` (click/toast behaviour),
-`Toast`, `ScrollManager`, the `Contact` section (form state) and the `Portfolio`/`Careers`
-views (client-side `useFetch` plus interactive buttons).
+genuinely need it: `Header` (menu state & scroll lock), `Toast`, `ScrollManager`, the `Services` section and the
+`Portfolio`/`Careers` views (client-side `useFetch`), and the `Contact` section (form state).
 
 ## Data layer
 
 - **`services/apiClient.ts`** — the only place that calls `fetch`. Owns the base URL
   (`NEXT_PUBLIC_API_URL`), headers and the `ApiError` shape.
-- **`services/contentService.ts`** — typed functions per page (`fetchPortfolio`,
-  `fetchCareers`), fetching related resources in parallel.
+- **`services/contentService.ts`** — typed fetchers per resource (`fetchServices`,
+  `fetchPortfolio`, `fetchCareers`).
 - **`hooks/useFetch.ts`** — generic hook returning `{ data, status, error, retry }`. Aborts
   in-flight requests on unmount. Pages use it instead of implementing request state themselves.
 - **`components/common/AsyncContent`** — renders the shared loading spinner, the error state with
   a retry button, and the empty state. Pages only describe their success case.
 
-`db.json` top-level keys become REST endpoints: `/hero`, `/about`, `/services`, `/contact`,
-`/footer`, `/portfolio`, `/careers`, `/projects`, `/jobs`.
+`db.json` top-level keys become REST endpoints: `/services`, `/projects` and `/jobs`.
 
 ## Reusable components
 
 - **`Badge`** — one pill component serving both job types and project technology tags (`size` prop).
 - **`ProjectCard`** — a single component covering all three portfolio bento shapes; the layout is
   selected by the `variant` field in the data (`overlay`, `stacked`, `split`).
-- **`SmartLink`** — decides between a Next.js link and a "Soon" toast for each navigation entry, so
-  header, mobile menu and footer share one behaviour.
+- **`SmartLink`** — renders a navigation entry as a Next.js link, so header, mobile menu and footer
+  share one behaviour.
 - **`Button`** — `primary`, `outline` and `accent` (the mint outline used by "Apply Now").
 
-Navigation is not content data: header and footer links live in `src/utils/navigation.ts` as typed
+Navigation is not content data: header and footer links (`HEADER_NAV_LINKS`, `FOOTER_NAV_LINKS`) live in `src/utils/navigation.ts` as typed
 constants alongside the `ROUTES` map.
 
 ## Toasts
 
 Notifications use **react-toastify**. The `<ToastContainer />` is configured once in
-`src/components/common/Toast/Toast.tsx` (bottom-center, 2.4s auto-close, one toast at a time) and
-rendered from the root layout. The brand pill appearance lives in `Toast.module.scss`.
+`src/components/common/Toast/Toast.tsx` (bottom-center, 3s auto-close, one toast at a time) and
+rendered from the root layout.
 
 `showComingSoonToast()` in `src/utils/toast.ts` uses a fixed `toastId`, so repeated clicks refresh
-the existing toast instead of stacking duplicates. It backs the Privacy Policy link, "Apply Now"
-and "View Case Study".
+the existing toast instead of stacking duplicates. It backs "Apply Now" and "View Case Study".
 
 ## Brand tokens
 

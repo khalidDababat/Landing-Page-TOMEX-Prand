@@ -8,7 +8,7 @@ const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout
 /**
  * Sends a contact request.
  *
- * When `VITE_CONTACT_API_URL` is configured the payload is posted to that
+ * When `NEXT_PUBLIC_CONTACT_API_URL` is configured the payload is posted to that
  * endpoint; otherwise the submission resolves locally so the form stays
  * fully functional without a backend.
  */

@@ -37,13 +37,7 @@ const Footer = () => (
       <div className={styles.columns}>
         <div className={styles.brandColumn}>
           <Link className={styles.logo} href={ROUTES.home} aria-label="TOMEX home">
-            <img
-              className={styles.logoMark}
-              src="/favicon/favicon.svg"
-              alt=""
-              width={22}
-              height={22}
-            />
+            <img className={styles.logoMark} src="/images/logo.png" alt="" width={22} height={22} />
             <span className={styles.logoText}>TOMEX</span>
           </Link>
           <p className={styles.description}>{DESCRIPTION}</p>
@@ -53,7 +47,7 @@ const Footer = () => (
           <h2 className={styles.columnTitle}>{NAVIGATION_TITLE}</h2>
           <ul className={styles.navList}>
             {FOOTER_NAV_LINKS.map((link) => (
-              <li key={link.label} className={styles.navLink}>
+              <li key={link.id} className={styles.navLink}>
                 <SmartLink className={styles.navLink} link={link} />
               </li>
             ))}

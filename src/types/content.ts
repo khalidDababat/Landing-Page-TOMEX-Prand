@@ -17,26 +17,11 @@ export interface NavLink {
   id: string;
   label: string;
   href: string;
-  /** Renders a "Soon" toast instead of navigating. */
-  comingSoon?: boolean;
 }
 
 export interface ImageAsset {
   src: string;
   alt: string;
-}
-
-export interface CallToAction {
-  label: string;
-  href: string;
-}
-
-export interface HeroContent {
-  title: string;
-  description: string;
-  primaryCta: CallToAction;
-  secondaryCta: CallToAction;
-  image: ImageAsset;
 }
 
 export interface FeatureCard {
@@ -82,24 +67,10 @@ export interface SocialLink {
   href: string;
 }
 
-export interface FooterContent {
-  description: string;
-  navigationTitle: string;
-  connectTitle: string;
-  socialLinks: SocialLink[];
-  copyright: string;
-}
-
-/** Heading and supporting line shared by the sub pages. */
-export interface PageMeta {
-  title: string;
-  description: string;
-}
-
 export type ProjectVariant = 'overlay' | 'stacked' | 'split';
 
 export interface Project {
-  id: string;
+  id: number | string;
   /** Drives which bento layout the card renders. */
   variant: ProjectVariant;
   category: string;
@@ -111,7 +82,7 @@ export interface Project {
 }
 
 export interface Job {
-  id: string;
+  id: number | string;
   /** Opportunity type shown as a badge, e.g. "Job" or "Intern". */
   type: string;
   location: string;

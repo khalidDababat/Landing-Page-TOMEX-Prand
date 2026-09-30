@@ -5,39 +5,20 @@ import Link from 'next/link';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import SmartLink from '@/components/common/SmartLink/SmartLink';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
-import { ROUTES } from '@/utils/navigation';
+import { HEADER_NAV_LINKS, ROUTES } from '@/utils/navigation';
 
 import styles from './Header.module.scss';
 
 /** Shared nav links rendered in both desktop and mobile menus. */
 const NavLinks = ({ linkClass }: { linkClass: string }) => (
   <>
-    <li>
-      <Link className={linkClass} href="/#about">
-        About
-      </Link>
-    </li>
-    <li>
-      <Link className={linkClass} href="/#services">
-        Services
-      </Link>
-    </li>
-    <li>
-      <Link className={linkClass} href="/portfolio">
-        Portfolio
-      </Link>
-    </li>
-    <li>
-      <Link className={linkClass} href="/careers">
-        Careers
-      </Link>
-    </li>
-    <li>
-      <Link className={linkClass} href="/#contact">
-        Contact
-      </Link>
-    </li>
+    {HEADER_NAV_LINKS.map((link) => (
+      <li key={link.id}>
+        <SmartLink className={linkClass} link={link} />
+      </li>
+    ))}
   </>
 );
 

@@ -16,7 +16,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import type { IconName, SocialIconName } from '@/types';
 
-/** Content icons, keyed by the `icon` field used in `src/data/db.json`. */
+/** Content icons, keyed by the `icon` field used in `data/db.json`. */
 export const iconRegistry: Record<IconName, SvgIconComponent> = {
   code: CodeIcon,
   school: SchoolIcon,

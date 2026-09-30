@@ -15,5 +15,5 @@ export const HEADER_NAV_LINKS: NavLink[] = [
   { id: 'contact', label: 'Contact', href: '/#contact' },
 ];
 
-/** Footer navigation links: the header links plus the privacy policy entry. */
+/** Footer navigation links (same entries as the header). */
 export const FOOTER_NAV_LINKS: NavLink[] = [...HEADER_NAV_LINKS];
