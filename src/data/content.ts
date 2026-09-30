@@ -4,9 +4,6 @@ import type {
   FooterContent,
   HeroContent,
   HomeContent,
-  Job,
-  PageMeta,
-  Project,
   ServicesContent,
 } from '@/types';
 
@@ -150,65 +147,6 @@ export const footerData: FooterContent = {
   ],
   copyright: `© ${new Date().getFullYear()} TOMEX. All rights reserved.`,
 };
-
-export const portfolioMeta: PageMeta = {
-  title: 'Our Portfolio',
-  description: 'Showcasing our precision in technology and creative design.',
-};
-
-export const projects: Project[] = [
-  {
-    id: '1',
-    variant: 'overlay',
-    category: 'Brand Identity Design',
-    title: 'AURORA Architecture',
-    description:
-      'A comprehensive rebranding for a leading architectural firm, emphasizing precision and structural elegance.',
-    image: {
-      src: '/images/project-aurora.jpg',
-      alt: 'Brand identity collateral and style guide displayed on a studio desk',
-    },
-    tags: [],
-    linkLabel: null,
-  },
-  {
-    id: '2',
-    variant: 'stacked',
-    category: 'AI Solutions Architecture',
-    title: 'Predictive Market Analytics',
-    description:
-      'Enterprise-grade machine learning models designed to forecast market trends with unprecedented accuracy.',
-    image: {
-      src: '/images/project-analytics.jpg',
-      alt: 'Analytics dashboard with a network graph and charts on a widescreen monitor',
-    },
-    tags: [],
-    linkLabel: 'View Case Study',
-  },
-  {
-    id: '3',
-    variant: 'split',
-    category: 'Mobile App Development',
-    title: 'Aura: Productivity Suite',
-    description:
-      'A unified mobile ecosystem balancing deep work focus with wellness tracking. Built for high-performance individuals seeking sustainable productivity.',
-    image: {
-      src: '/images/project-aura.jpg',
-      alt: 'Three smartphones on a desk showing the Aura productivity app',
-    },
-    tags: ['iOS', 'Android', 'React Native'],
-    linkLabel: null,
-  },
-];
-
-export const careersMeta: PageMeta = {
-  title: 'Open Opportunities',
-  description: 'Find your next role at TOMEX.',
-};
-
-export const jobs: Job[] = [
-  { id: '1', type: 'Education', location: 'Remote', title: 'JAVA Course OOP' },
-];
 
 /** Full home-page content bundle (replaces the JSON-server fetch). */
 export const homeContent: HomeContent = {

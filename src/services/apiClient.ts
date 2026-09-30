@@ -1,7 +1,7 @@
 const DEFAULT_BASE_URL = 'http://localhost:3001';
 
 /** Base URL of the json-server API (see `.env.example`). */
-export const API_BASE_URL = import.meta.env.VITE_API_URL || DEFAULT_BASE_URL;
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || DEFAULT_BASE_URL;
 
 export class ApiError extends Error {
   public readonly status: number;

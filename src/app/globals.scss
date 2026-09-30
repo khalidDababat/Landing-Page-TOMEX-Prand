@@ -1,0 +1,28 @@
+.notFound {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 5rem;
+  }
+
+  div {
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    a {
+      font-size: 20px;
+    }
+
+    &:hover {
+      background-color: #8ef8d1;
+    }
+  }
+}
+
+

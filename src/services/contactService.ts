@@ -1,6 +1,6 @@
 import type { ContactFormValues, ContactSubmitResult } from '@/types';
 
-const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL ?? '';
+const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL ?? '';
 const SIMULATED_LATENCY_MS = 600;
 
 const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));

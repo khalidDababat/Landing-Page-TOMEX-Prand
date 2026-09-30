@@ -1,3 +1,6 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
 .portfolio {
   background-color: $color-navy;
   padding-block: 7.5rem 5.75rem;

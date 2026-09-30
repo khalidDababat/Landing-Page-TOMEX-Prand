@@ -1,3 +1,5 @@
+'use client';
+
 import AsyncContent from '@/components/common/AsyncContent/AsyncContent';
 import ProjectCard from '@/components/common/ProjectCard/ProjectCard';
 import { useFetch } from '@/hooks/useFetch';

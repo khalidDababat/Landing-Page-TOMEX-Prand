@@ -1,3 +1,5 @@
+'use client';
+
 import Button from '@/components/common/Button/Button';
 import { useContactForm } from '@/hooks/useContactForm';
 import type { ContactContent } from '@/types';

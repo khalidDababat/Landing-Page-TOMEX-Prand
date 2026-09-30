@@ -6,7 +6,7 @@ import { homeContent } from '@/data/content';
 
 const Home = () => (
   <>
-    <Hero content={homeContent.hero} />
+    <Hero />
     <About content={homeContent.about} />
     <Services content={homeContent.services} />
     <Contact content={homeContent.contact} />

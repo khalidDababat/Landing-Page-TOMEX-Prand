@@ -1,3 +1,5 @@
+'use client';
+
 import AsyncContent from '@/components/common/AsyncContent/AsyncContent';
 import JobCard from '@/components/common/JobCard/JobCard';
 import { useFetch } from '@/hooks/useFetch';
@@ -24,7 +26,9 @@ const Careers = () => {
           {({ jobs }) => (
             <>
               <header className={styles.header}>
-                <h1 className={styles.title} id="careers-title">Open Opportunities</h1>
+                <h1 className={styles.title} id="careers-title">
+                  Open Opportunities
+                </h1>
                 <p className={styles.description}>Find your role Or Internship in TOMEX.</p>
               </header>
               <ul className={styles.list}>

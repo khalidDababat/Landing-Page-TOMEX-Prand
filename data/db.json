@@ -105,31 +105,6 @@
       }
     ]
   },
-  "footer": {
-    "description": "Technology, Design, and AI solutions for the modern enterprise.",
-    "navigationTitle": "Navigation",
-    "connectTitle": "Connect",
-    "socialLinks": [
-      {
-        "id": "facebook",
-        "icon": "facebook",
-        "label": "Facebook",
-        "href": "https://www.facebook.com"
-      },
-      {
-        "id": "instagram",
-        "icon": "instagram",
-        "label": "Instagram",
-        "href": "https://www.instagram.com"
-      },
-      {
-        "id": "youtube",
-        "icon": "youtube",
-        "label": "YouTube",
-        "href": "https://www.youtube.com"
-      }
-    ]
-  },
 
   "careers": {
     "title": "Open Opportunities",

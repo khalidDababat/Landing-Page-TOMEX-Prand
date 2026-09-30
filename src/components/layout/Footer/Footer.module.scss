@@ -1,3 +1,6 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .footer {
   margin-top: auto;
   background-color: $color-footer;
