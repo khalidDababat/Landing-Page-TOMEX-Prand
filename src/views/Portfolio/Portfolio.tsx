@@ -1,55 +1,49 @@
-'use client';
-
-import AsyncContent from '@/components/common/AsyncContent/AsyncContent';
+import EmptyState from '@/components/common/AsyncContent/EmptyState';
+import ErrorState from '@/components/common/AsyncContent/ErrorState';
 import ProjectCard from '@/components/common/ProjectCard/ProjectCard';
-import { useFetch } from '@/hooks/useFetch';
 import { fetchPortfolio } from '@/services/contentService';
-import { showComingSoonToast } from '@/utils/toast';
+import type { Project } from '@/types';
 
 import styles from './Portfolio.module.scss';
 
-/** Portfolio page showing the project collection from the API. */
-const Portfolio = () => {
-  const { data, status, error, retry } = useFetch(fetchPortfolio);
+/** Portfolio page showing the project collection from the API (fetched on the server). */
+const Portfolio = async () => {
+  let projects: Project[] | null = null;
+  let errorMessage: string | null = null;
+
+  try {
+    projects = await fetchPortfolio();
+  } catch (cause: unknown) {
+    errorMessage = cause instanceof Error ? cause.message : 'Something went wrong.';
+  }
 
   return (
     <section className={styles.portfolio} aria-labelledby="portfolio-title">
       <div className={styles.inner}>
-        <AsyncContent
-          status={status}
-          error={error}
-          data={data}
-          onRetry={retry}
-          loadingLabel="Loading projects"
-          emptyMessage="No projects have been published yet."
-        >
-          {(projects) => (
-            <>
-              <header className={styles.header}>
-                <h1 className={styles.title} id="portfolio-title">
-                  Our Portfolio
-                </h1>
-                <p className={styles.description}>
-                  Showcasing our precision in technology and creative design.
-                </p>
-              </header>
+        {errorMessage !== null || !projects ? (
+          <ErrorState message={errorMessage ?? undefined} />
+        ) : projects.length === 0 ? (
+          <EmptyState message="No projects have been published yet." />
+        ) : (
+          <>
+            <header className={styles.header}>
+              <h1 className={styles.title} id="portfolio-title">
+                Our Portfolio
+              </h1>
+              <p className={styles.description}>
+                Showcasing our precision in technology and creative design.
+              </p>
+            </header>
 
-              {projects.length === 0 ? (
-                <div className={styles.emptyState}>
-                  <p className={styles.emptyMessage}>No projects exist yet. Check back soon!</p>
+            <div className={styles.grid}>
+              {projects.map((project) => (
+                <div className={styles[project.variant]} key={project.id}>
+                  <ProjectCard project={project} />
                 </div>
-              ) : (
-                <div className={styles.grid}>
-                  {projects.map((project) => (
-                    <div className={styles[project.variant]} key={project.id}>
-                      <ProjectCard project={project} onOpenLink={showComingSoonToast} />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-        </AsyncContent>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
