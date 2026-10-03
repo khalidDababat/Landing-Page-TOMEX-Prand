@@ -2,29 +2,12 @@
 
 import Button from '@/components/common/Button/Button';
 import { useContactForm } from '@/hooks/useContactForm';
-import type { ContactContent } from '@/types';
 import { iconRegistry } from '@/utils/iconRegistry';
 
 import styles from './Contact.module.scss';
 
-const content: ContactContent = {
-  title: 'Got a Project in Mind?',
-  description:
-    "Let's discuss how our technology and design expertise can accelerate your business objectives.",
-  details: [
-    {
-      id: 'email',
-      icon: 'email',
-      value: 'khaliddababat@gmail.com',
-      href: 'mailto:khaliddababat@gmail.com',
-    },
-    {
-      id: 'location',
-      icon: 'location',
-      value: 'Global Remote',
-    },
-  ],
-};
+const EmailIcon = iconRegistry.email;
+const LocationIcon = iconRegistry.location;
 
 /** Contact section: project enquiry copy, contact details and the message form. */
 const Contact = () => {
@@ -37,29 +20,26 @@ const Contact = () => {
         <div className={styles.panel}>
           <div className={styles.info}>
             <h2 className={styles.title} id="contact-title">
-              {content.title}
+              Got a Project in Mind?
             </h2>
 
-            <p className={styles.description}>{content.description}</p>
+            <p className={styles.description}>
+              Let's discuss how our technology and design expertise can accelerate your business
+              objectives.
+            </p>
 
             <ul className={styles.details}>
-              {content.details.map((detail) => {
-                const Icon = iconRegistry[detail.icon];
+              <li className={styles.detail}>
+                <EmailIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
+                <a className={styles.detailLink} href="mailto:khaliddababat@gmail.com">
+                  khaliddababat@gmail.com
+                </a>
+              </li>
 
-                return (
-                  <li className={styles.detail} key={detail.id}>
-                    <Icon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
-
-                    {detail.href ? (
-                      <a className={styles.detailLink} href={detail.href}>
-                        {detail.value}
-                      </a>
-                    ) : (
-                      <span>{detail.value}</span>
-                    )}
-                  </li>
-                );
-              })}
+              <li className={styles.detail}>
+                <LocationIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
+                <span>Global Remote</span>
+              </li>
             </ul>
           </div>
 
@@ -79,7 +59,7 @@ const Contact = () => {
                   value={values.name}
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? 'contact-name-error' : undefined}
-                  onChange={(event) => handleChange('name', event.target.value)}
+                  onChange={handleChange}
                 />
                 {errors.name && (
                   <span className={styles.error} id="contact-name-error">
@@ -102,7 +82,7 @@ const Contact = () => {
                   value={values.email}
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={errors.email ? 'contact-email-error' : undefined}
-                  onChange={(event) => handleChange('email', event.target.value)}
+                  onChange={handleChange}
                 />
                 {errors.email && (
                   <span className={styles.error} id="contact-email-error">
@@ -124,7 +104,7 @@ const Contact = () => {
                   value={values.message}
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'contact-message-error' : undefined}
-                  onChange={(event) => handleChange('message', event.target.value)}
+                  onChange={handleChange}
                 />
                 {errors.message && (
                   <span className={styles.error} id="contact-message-error">

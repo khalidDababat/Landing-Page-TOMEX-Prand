@@ -85,10 +85,11 @@
     font-weight: 900;
     border-bottom-left-radius: 35%;
     border-top-right-radius: 35%;
-    background-color: #0564ca;
+    color: black;
+    background-color: #46DAA4;
 
     &:hover {
-      background-color: #2ba3f3;
+      background-color: #75f394;
       color: white;
       transition: all 0.3s ease-in-out;
     }

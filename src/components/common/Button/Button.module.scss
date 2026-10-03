@@ -41,17 +41,6 @@
   }
 }
 
-.outline {
-  background-color: transparent;
-  border-color: $color-border-strong;
-  color: $color-text;
-
-  &:hover:not(:disabled) {
-    border-color: $color-mint;
-    color: $color-mint;
-  }
-}
-
 .fullWidth {
   width: 100%;
 }
