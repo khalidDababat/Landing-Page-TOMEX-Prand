@@ -1,3 +1,6 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -35,17 +38,6 @@
 
   &:hover:not(:disabled) {
     background-color: color-mix(in srgb, $color-mint 88%, $color-white);
-  }
-}
-
-.outline {
-  background-color: transparent;
-  border-color: $color-border-strong;
-  color: $color-text;
-
-  &:hover:not(:disabled) {
-    border-color: $color-mint;
-    color: $color-mint;
   }
 }
 

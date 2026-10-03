@@ -1,16 +1,18 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
 .hero {
   padding-block: $spacing-2xl $spacing-xl;
-
+  min-height: 80vh;
   @include down('tablet') {
     padding-block: $spacing-xl;
   }
 }
 
 .inner {
-  @include container;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: $spacing-xl;
+  display: flex;
+  direction: column;
+  justify-content: center;
   align-items: center;
 
   @include down('laptop') {
@@ -20,18 +22,28 @@
 }
 
 .content {
+  padding: 10px 20px;
+}
+.logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 220px;
+    height: 160px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
 }
 
 .title {
-  max-width: 560px;
-  font-size: $font-size-4xl;
+  font-size: 40px;
   font-weight: $font-weight-bold;
   line-height: 1.28;
   letter-spacing: -0.01em;
   color: $color-text;
+  text-align: center;
 
   @include down('desktop') {
     font-size: 2.75rem;
@@ -48,36 +60,45 @@
 
 .description {
   margin-top: $spacing-lg;
-  max-width: 530px;
+  color: #2dd598 !important;
+  font-size: 19px !important;
+  text-align: center;
   @include body-text($font-size-md, $font-weight-semibold, 1.8);
+
+  &:hover {
+    color: rgb(137, 138, 138) !important;
+    transition: all 0.2s ease-in-out !important;
+    cursor: grab !important;
+  }
 }
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-md;
-  margin-top: $spacing-2xl;
+
+  margin-top: 30px;
+  justify-content: center;
+
+  a {
+    padding: 20px 45px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 900;
+    border-bottom-left-radius: 35%;
+    border-top-right-radius: 35%;
+    color: black;
+    background-color: #46DAA4;
+
+    &:hover {
+      background-color: #75f394;
+      color: white;
+      transition: all 0.3s ease-in-out;
+    }
+  }
 
   @include down('tablet') {
     margin-top: $spacing-xl;
   }
-}
-
-.buttonIcon {
-  font-size: 1rem;
-}
-
-.figure {
-  margin: 0;
-}
-
-.image {
-  width: 100%;
-  aspect-ratio: 560 / 601;
-  object-fit: cover;
-  border-radius: $radius-2xl;
-
-  @include down('laptop') {
-    aspect-ratio: 16 / 10;
+  button {
+    padding: 5px 20px;
   }
 }

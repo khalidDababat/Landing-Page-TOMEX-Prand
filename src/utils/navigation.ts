@@ -7,12 +7,6 @@ export const ROUTES = {
   careers: '/careers',
 } as const;
 
-/**
- * Header navigation links.
- *
- * In-page anchors are absolute (`/#about`) so they resolve to the home page
- * section even when clicked from another route.
- */
 export const HEADER_NAV_LINKS: NavLink[] = [
   { id: 'about', label: 'About', href: '/#about' },
   { id: 'services', label: 'Services', href: '/#services' },
@@ -21,8 +15,5 @@ export const HEADER_NAV_LINKS: NavLink[] = [
   { id: 'contact', label: 'Contact', href: '/#contact' },
 ];
 
-/** Footer navigation links: the header links plus the privacy policy entry. */
-export const FOOTER_NAV_LINKS: NavLink[] = [
-  ...HEADER_NAV_LINKS,
-  { id: 'privacy-policy', label: 'Privacy Policy', href: '#privacy-policy', comingSoon: true },
-];
+/** Footer navigation links (same entries as the header). */
+export const FOOTER_NAV_LINKS: NavLink[] = [...HEADER_NAV_LINKS];

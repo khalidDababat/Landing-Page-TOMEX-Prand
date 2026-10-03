@@ -1,14 +1,26 @@
-import { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import logo from '@/assets/icons/logo.svg';
 import SmartLink from '@/components/common/SmartLink/SmartLink';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { HEADER_NAV_LINKS, ROUTES } from '@/utils/navigation';
 
 import styles from './Header.module.scss';
+
+/** Shared nav links rendered in both desktop and mobile menus. */
+const NavLinks = ({ linkClass }: { linkClass: string }) => (
+  <>
+    {HEADER_NAV_LINKS.map((link) => (
+      <li key={link.id}>
+        <SmartLink className={linkClass} link={link} />
+      </li>
+    ))}
+  </>
+);
 
 /** Sticky site header with desktop navigation and a mobile menu. */
 const Header = () => {
@@ -16,23 +28,17 @@ const Header = () => {
 
   useBodyScrollLock(isMenuOpen);
 
-  const closeMenu = useCallback((): void => setIsMenuOpen(false), []);
-
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link className={styles.logo} to={ROUTES.home} aria-label="TOMEX home">
-          <img className={styles.logoMark} src={logo} alt="" width={24} height={24} />
-          <span className={styles.logoText}>TOMEX</span>
+        <Link className={styles.logo} href={ROUTES.home} aria-label="TOMEX home">
+          <img className={styles.logoMark} src="/favicon.ico" alt="logo TOMEX" />
+          <span className={styles.logoText}>TOMEX Technologies</span>
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Main navigation">
           <ul className={styles.navList}>
-            {HEADER_NAV_LINKS.map((link) => (
-              <li key={link.id}>
-                <SmartLink className={styles.navLink} link={link} onNavigate={closeMenu} />
-              </li>
-            ))}
+            <NavLinks linkClass={styles.navLink} />
           </ul>
         </nav>
 
@@ -55,11 +61,7 @@ const Header = () => {
         hidden={!isMenuOpen}
       >
         <ul className={styles.mobileNavList}>
-          {HEADER_NAV_LINKS.map((link) => (
-            <li key={link.id}>
-              <SmartLink className={styles.mobileNavLink} link={link} onNavigate={closeMenu} />
-            </li>
-          ))}
+          <NavLinks linkClass={styles.mobileNavLink} />
         </ul>
       </nav>
     </header>

@@ -4,12 +4,51 @@ import { iconRegistry } from '@/utils/iconRegistry';
 
 import styles from './About.module.scss';
 
-interface AboutProps {
-  content: AboutContent;
-}
+const content: AboutContent = {
+  title: 'About TOMEX',
+  cards: [
+    {
+      id: 'web-software',
+      icon: 'code',
+      title: 'Web & Software',
+      description:
+        'Building scalable, secure, and high-performance digital platforms tailored for enterprise needs.',
+    },
+    {
+      id: 'programming-education',
+      icon: 'school',
+      title: 'Programming Education',
+      description:
+        'Empowering the next generation of developers with industry-leading curriculum and mentorship.',
+    },
+    {
+      id: 'ai-powered-video',
+      icon: 'video',
+      title: 'AI-Powered Video',
+      description:
+        'Leveraging artificial intelligence to automate and elevate digital content creation workflows.',
+    },
+  ],
+  pillars: [
+    {
+      id: 'vision',
+      icon: 'vision',
+      title: 'Our Vision',
+      description:
+        'To be the leading global partner for enterprises seeking intelligent, design-driven technology solutions that redefine industry standards and drive sustainable innovation.',
+    },
+    {
+      id: 'mission',
+      icon: 'rocket',
+      title: 'Our Mission',
+      description:
+        'We deliver precision-engineered software, transformative educational experiences, and advanced AI content solutions, ensuring our clients stay ahead in a rapidly evolving digital landscape.',
+    },
+  ],
+};
 
 /** About section: three focus-area cards plus the vision and mission cards. */
-const About = ({ content }: AboutProps) => (
+const About = () => (
   <section className={styles.about} id="about" aria-labelledby="about-title">
     <div className={styles.inner}>
       <SectionTitle title={content.title} align="center" withAccent id="about-title" />

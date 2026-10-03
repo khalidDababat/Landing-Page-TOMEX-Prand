@@ -1,5 +1,5 @@
-@use 'sass:map';
 @use 'variables' as *;
+@use 'sass:map';
 
 // ============================================================
 //  Responsive helpers
@@ -103,6 +103,33 @@ $breakpoints: (
   clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
+}
+
+// ============================================================
+//  Navigation helpers
+// ============================================================
+
+/// Animated underline on hover using a sliding ::after pseudo-element.
+/// Color is always $color-mint (#2DD598). Apply to the link element itself.
+@mixin nav-link-hover {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: #2dd598;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
 }
 
 // ============================================================

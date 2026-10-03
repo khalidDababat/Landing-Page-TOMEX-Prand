@@ -1,37 +1,19 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 import styles from './Button.module.scss';
 
-export type ButtonVariant = 'primary' | 'outline' | 'accent';
+type ButtonVariant = 'primary' | 'accent';
 
-interface BaseButtonProps {
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   variant?: ButtonVariant;
   fullWidth?: boolean;
-  children: ReactNode;
-  className?: string;
 }
 
-interface ButtonAsLinkProps extends BaseButtonProps {
-  href: string;
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
-  type?: never;
-  disabled?: never;
-}
-
-interface ButtonAsButtonProps extends BaseButtonProps {
-  href?: never;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  type?: 'button' | 'submit';
-  disabled?: boolean;
-}
-
-export type ButtonProps = ButtonAsLinkProps | ButtonAsButtonProps;
-
-/** Brand button rendered as an anchor when `href` is provided, otherwise as a button. */
+/** Brand button. For navigation use `next/link` instead. */
 const Button = ({
   variant = 'primary',
   fullWidth = false,
-  children,
+  type = 'button',
   className,
   ...rest
 }: ButtonProps) => {
@@ -39,23 +21,7 @@ const Button = ({
     .filter(Boolean)
     .join(' ');
 
-  if ('href' in rest && rest.href) {
-    const { href, onClick } = rest;
-
-    return (
-      <a className={classes} href={href} onClick={onClick}>
-        {children}
-      </a>
-    );
-  }
-
-  const { type = 'button', disabled = false, onClick } = rest as ButtonAsButtonProps;
-
-  return (
-    <button className={classes} type={type} disabled={disabled} onClick={onClick}>
-      {children}
-    </button>
-  );
+  return <button className={classes} type={type} {...rest} />;
 };
 
 export default Button;
