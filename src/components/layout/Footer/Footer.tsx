@@ -6,7 +6,7 @@ import { FOOTER_NAV_LINKS, ROUTES } from '@/utils/navigation';
 
 import styles from './Footer.module.scss';
 
-const DESCRIPTION = 'Technology, Design, and AI solutions for the modern enterprise.';
+const DESCRIPTION = 'Technology, Design, and AI solutions for the individuals and businesses.';
 const NAVIGATION_TITLE = 'Navigation';
 const CONNECT_TITLE = 'Connect';
 const SOCIAL_LINKS = [
@@ -27,6 +27,12 @@ const SOCIAL_LINKS = [
     icon: 'youtube' as const,
     label: 'YouTube',
     href: 'https://www.youtube.com/@TOMEXAcademy-j9u',
+  },
+  {
+    id: 'email',
+    icon: 'email' as const,
+    label: 'Email',
+    href: 'mailto:khaliddababat@gmail.com',
   },
 ];
 

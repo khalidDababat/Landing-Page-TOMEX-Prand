@@ -1,13 +1,13 @@
 {
   "services": {
     "title": "Our Services",
-    "description": "Comprehensive technology solutions designed for scale and impact.",
+    "description": "Smart digital solutions built around your ideas and ambitions.",
     "items": [
       {
         "id": "web-software-dev",
         "icon": "laptop",
         "title": "Web & Software Development",
-        "description": "Custom enterprise applications, robust backend architectures, and intuitive frontend experiences built with modern frameworks.",
+        "description": "From business websites to custom web applications, we design and develop reliable, responsive, and scalable digital solutions tailored to your needs.",
         "image": {
           "src": "/images/service-web-software.jpg",
           "alt": "Developer workstation with code on a wide monitor"
@@ -17,20 +17,20 @@
         "id": "tech-education",
         "icon": "book",
         "title": "Tech Education",
-        "description": "Corporate training, specialized bootcamps, and upskilling programs designed to build high-performing engineering teams.",
+        "description": "Practical programming courses, specialized workshops, and hands-on learning experiences designed to help individuals and teams develop real-world technical skills.",
         "image": {
           "src": "/images/service-tech-education.jpg",
-          "alt": "Training room with developers learning at workstations"
+          "alt": "Training room"
         }
       },
       {
         "id": "ai-content-generation",
         "icon": "ai",
         "title": "AI Content Generation",
-        "description": "Automated video production, intelligent editing pipelines, and dynamic content generation powered by advanced machine learning models.",
+        "description": "Creative video production, AI-generated visuals, and intelligent content solutions that help brands communicate their ideas in innovative ways.",
         "image": {
           "src": "/images/service-ai-content.jpg",
-          "alt": "Analytics wall showing an AI network graph and data panels"
+          "alt": "AI-generated artwork"
         }
       }
     ]

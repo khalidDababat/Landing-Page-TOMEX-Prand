@@ -8,6 +8,7 @@ import Footer from '@/components/layout/Footer/Footer';
 import Header from '@/components/layout/Header/Header';
 import ScrollManager from '@/components/layout/ScrollManager/ScrollManager';
 import Toast from '@/components/common/Toast/Toast';
+import WhatsAppButton from '@/components/common/WhatsAppButton/WhatsAppButton';
 
 const SITE_TITLE = 'TOMEX Technology';
 
@@ -42,6 +43,7 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => (
       </ScrollManager>
 
       <Footer />
+      <WhatsAppButton />
       <Toast />
     </body>
   </html>

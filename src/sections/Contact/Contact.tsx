@@ -7,6 +7,7 @@ import { iconRegistry } from '@/utils/iconRegistry';
 import styles from './Contact.module.scss';
 
 const EmailIcon = iconRegistry.email;
+const PhoneIcon = iconRegistry.phone;
 const LocationIcon = iconRegistry.location;
 
 /** Contact section: project enquiry copy, contact details and the message form. */
@@ -35,7 +36,12 @@ const Contact = () => {
                   khaliddababat@gmail.com
                 </a>
               </li>
-
+              <li className={styles.detail}>
+                <PhoneIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
+                <a className={styles.detailLink} href="tel:+972597088178">
+                  +972 59-708-8178
+                </a>
+              </li>
               <li className={styles.detail}>
                 <LocationIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
                 <span>Global Remote</span>

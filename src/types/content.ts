@@ -9,9 +9,10 @@ export type IconName =
   | 'book'
   | 'ai'
   | 'email'
+  | 'phone'
   | 'location';
 
-export type SocialIconName = 'facebook' | 'instagram' | 'linkedin' | 'youtube';
+export type SocialIconName = 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'email';
 
 export interface NavLink {
   id: string;

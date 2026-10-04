@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.button {
+  @include flex-center;
+  @include focus-ring;
+  position: fixed;
+  right: 1.5rem;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  z-index: $z-whatsapp;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: $color-whatsapp;
+  color: $color-white;
+  font-size: 2rem;
+  box-shadow: $shadow-card;
+  transition:
+    transform $transition-fast,
+    filter $transition-fast,
+    box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 12px 28px rgba($color-whatsapp, 0.35);
+  }
+
+  @include down('tablet') {
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    width: 48px;
+    height: 48px;
+    font-size: 1.75rem;
+  }
+}
+
+.icon {
+  display: block;
+}

@@ -6,6 +6,7 @@
 $color-navy: #0b2a4a;
 $color-mint: #2dd598;
 $color-white: #ffffff;
+$color-whatsapp: #25d366;
 
 // --- Surfaces derived from the brand navy -------------------
 $color-page: #001429; // page + header background (deep navy)
@@ -83,6 +84,7 @@ $breakpoint-laptop: 992px;
 $breakpoint-desktop: 1200px;
 
 // --- Layers -------------------------------------------------
+$z-whatsapp: 80;
 $z-header: 100;
 $z-mobile-menu: 90;
 $z-toast: 200;

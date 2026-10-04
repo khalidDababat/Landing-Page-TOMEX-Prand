@@ -8,25 +8,25 @@ const content: AboutContent = {
   title: 'About TOMEX',
   cards: [
     {
-      id: 'web-software',
+      id: 'Web-Software-Development',
       icon: 'code',
-      title: 'Web & Software',
+      title: 'Web & Software Development',
       description:
-        'Building scalable, secure, and high-performance digital platforms tailored for enterprise needs.',
+        'We build modern, secure, and scalable websites and software solutions that help businesses grow and succeed in the digital world.',
     },
     {
-      id: 'programming-education',
+      id: 'tech-education',
       icon: 'school',
-      title: 'Programming Education',
+      title: 'Tech Education',
       description:
-        'Empowering the next generation of developers with industry-leading curriculum and mentorship.',
+        'We empower aspiring developers and professionals through practical courses, hands-on training, and real-world technical knowledge.',
     },
     {
       id: 'ai-powered-video',
       icon: 'video',
-      title: 'AI-Powered Video',
+      title: 'AI Content Creation',
       description:
-        'Leveraging artificial intelligence to automate and elevate digital content creation workflows.',
+        'We transform ideas into engaging visual content using AI-powered tools for video generation, creative production, and digital storytelling.',
     },
   ],
   pillars: [
@@ -35,14 +35,14 @@ const content: AboutContent = {
       icon: 'vision',
       title: 'Our Vision',
       description:
-        'To be the leading global partner for enterprises seeking intelligent, design-driven technology solutions that redefine industry standards and drive sustainable innovation.',
+        'To become a trusted technology and creative partner, empowering individuals and businesses through innovative digital solutions, education, and artificial intelligence.',
     },
     {
       id: 'mission',
       icon: 'rocket',
       title: 'Our Mission',
       description:
-        'We deliver precision-engineered software, transformative educational experiences, and advanced AI content solutions, ensuring our clients stay ahead in a rapidly evolving digital landscape.',
+        'To turn ideas into meaningful digital experiences by combining modern software development, practical technology education, and AI-powered creativity.',
     },
   ],
 };
