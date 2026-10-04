@@ -13,3 +13,7 @@ export const fetchPortfolio = (signal?: AbortSignal): Promise<Project[]> =>
 /** Careers page job collection. */
 export const fetchCareers = (signal?: AbortSignal): Promise<Job[]> =>
   getResource<Job[]>('jobs', signal);
+
+/** A single careers opportunity by id. */
+export const fetchJob = (id: string, signal?: AbortSignal): Promise<Job> =>
+  getResource<Job>(`jobs/${id}`, signal);

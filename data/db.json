@@ -85,7 +85,38 @@
       "id": 1,
       "type": "Education",
       "location": "Remote",
-      "title": "JAVA Course OOP"
+      "title": "JAVA Course OOP",
+      "description": "Learn object-oriented programming with Java through a hands-on, project-based course designed for beginners and early developers.",
+      "aboutRole": "This course walks you from Java fundamentals to core OOP principles. You will practise with guided exercises and build small projects with feedback from experienced TOMEX instructors.",
+      "responsibilities": [
+        "Attend the live online sessions and complete weekly exercises",
+        "Build and present a small Java project using OOP principles",
+        "Participate in code reviews and apply the feedback",
+        "Keep a consistent learning pace and ask questions early"
+      ],
+      "application": {
+        "method": "internal",
+        "externalUrl": null
+      }
+    },
+    {
+      "id": 2,
+      "type": "Education",
+      "location": "Remote",
+      "title": "Front End Developer HTML/CSS/JAVASCRIPT",
+      "description": "Build modern, responsive websites from scratch in this practical front-end course covering HTML, CSS and JavaScript.",
+      "aboutRole": "You will learn how to structure pages with semantic HTML, style them with modern CSS and add interactivity with JavaScript, finishing with a portfolio-ready website.",
+      "responsibilities": [
+        "Attend the live online sessions and complete practical assignments",
+        "Build responsive layouts that work on mobile and desktop",
+        "Develop interactive features using JavaScript",
+        "Publish a final project and present it to the group"
+      ],
+      "application": {
+        "method": "internal",
+        "externalUrl": null
+      }
     }
+   
   ]
 }

@@ -1,14 +1,20 @@
+import { createElement } from 'react';
 import { toast } from 'react-toastify';
 
-/** Shows a standard "coming soon" toast notification. */
-export const showComingSoonToast = (): void => {
-  toast.info('🚀 Coming soon — stay tuned!', {
-    toastId: 'coming-soon',
-    position: 'bottom-center',
-    autoClose: 3000,
-    hideProgressBar: false,
+import ToastContent from '@/components/common/Toast/ToastContent';
+import styles from '@/components/common/Toast/ToastContent.module.scss';
+import type { ComingSoonNotice } from '@/types';
+
+/** Shows a titled "coming soon" toast. Repeated calls with the same title refresh instead of stacking. */
+export const showComingSoon = ({ title, message }: ComingSoonNotice): void => {
+  toast(createElement(ToastContent, { title, message }), {
+    toastId: title,
+    position: 'top-center',
+    autoClose: 10000,
+    icon: false,
+    className: styles.toast,
+    progressClassName: styles.progress,
     closeOnClick: true,
     pauseOnHover: true,
-    draggable: true,
   });
 };

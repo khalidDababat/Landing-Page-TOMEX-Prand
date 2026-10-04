@@ -14,10 +14,17 @@ export type IconName =
 
 export type SocialIconName = 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'email';
 
+export interface ComingSoonNotice {
+  title: string;
+  message: string;
+}
+
 export interface NavLink {
   id: string;
   label: string;
   href: string;
+  /** When set, the header shows this toast instead of navigating. */
+  comingSoon?: ComingSoonNotice;
 }
 
 export interface ImageAsset {
@@ -82,10 +89,23 @@ export interface Project {
   linkLabel: string | null;
 }
 
+/** Opportunity types; Education opportunities may apply through an external form. */
+export type JobType = 'Education' | 'Internship' | 'Role';
+
+export interface JobApplication {
+  /** "internal" opens the TOMEX application form; "external" opens `externalUrl` (Education only). */
+  method: 'internal' | 'external';
+  /** HTTPS link of the external form, or null when the method is "internal". */
+  externalUrl: string | null;
+}
+
 export interface Job {
   id: number | string;
-  /** Opportunity type shown as a badge, e.g. "Job" or "Intern". */
-  type: string;
+  type: JobType;
   location: string;
   title: string;
+  description: string;
+  aboutRole: string;
+  responsibilities: string[];
+  application: JobApplication;
 }

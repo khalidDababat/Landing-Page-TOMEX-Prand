@@ -4,7 +4,6 @@ import AsyncContent from '@/components/common/AsyncContent/AsyncContent';
 import JobCard from '@/components/common/JobCard/JobCard';
 import { useFetch } from '@/hooks/useFetch';
 import { fetchCareers } from '@/services/contentService';
-import { showComingSoonToast } from '@/utils/toast';
 
 import styles from './Careers.module.scss';
 
@@ -33,7 +32,7 @@ const Careers = () => {
               </header>
               <ul className={styles.list}>
                 {jobs.map((job) => (
-                  <JobCard key={job.id} job={job} onApply={showComingSoonToast} />
+                  <JobCard key={job.id} job={job} />
                 ))}
               </ul>
             </>

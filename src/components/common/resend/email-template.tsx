@@ -1,4 +1,3 @@
-
 interface EmailTemplateProps {
   name: string;
   email: string;

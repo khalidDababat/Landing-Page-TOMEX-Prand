@@ -27,7 +27,6 @@
 .logoMark {
   width: 80px;
   height: 60px;
- 
 }
 
 .logoText {
@@ -62,6 +61,14 @@
   &:hover {
     color: $color-mint;
   }
+}
+
+// Makes a <button> nav item look identical to the link items.
+.navButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
 }
 
 .menuToggle {

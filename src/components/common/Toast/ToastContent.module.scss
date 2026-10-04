@@ -1,0 +1,30 @@
+@use '../../../styles/variables' as *;
+
+// Applied through react-toastify's `className` / `progressClassName` options.
+.toast {
+  background-color: $color-surface-raised;
+  border: 1px solid $color-border-strong;
+  border-left: 4px solid $color-mint;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  color: $color-white;
+}
+
+.progress {
+  background: $color-mint;
+}
+
+.title {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-mint;
+}
+
+.message {
+  margin: 0;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+  color: black;
+}

@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SmartLink from '@/components/common/SmartLink/SmartLink';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { HEADER_NAV_LINKS, ROUTES } from '@/utils/navigation';
+import { showComingSoon } from '@/utils/toast';
 
 import styles from './Header.module.scss';
 
@@ -16,7 +17,17 @@ const NavLinks = ({ linkClass }: { linkClass: string }) => (
   <>
     {HEADER_NAV_LINKS.map((link) => (
       <li key={link.id}>
-        <SmartLink className={linkClass} link={link} />
+        {link.comingSoon ? (
+          <button
+            className={`${linkClass} ${styles.navButton}`}
+            type="button"
+            onClick={() => showComingSoon(link.comingSoon!)}
+          >
+            {link.label}
+          </button>
+        ) : (
+          <SmartLink className={linkClass} link={link} />
+        )}
       </li>
     ))}
   </>

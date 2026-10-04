@@ -10,10 +10,20 @@ export const ROUTES = {
 export const HEADER_NAV_LINKS: NavLink[] = [
   { id: 'about', label: 'About', href: '/#about' },
   { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'portfolio', label: 'Portfolio', href: ROUTES.portfolio },
+  {
+    id: 'portfolio',
+    label: 'Portfolio',
+    href: ROUTES.portfolio,
+    comingSoon: {
+      title: 'Something Great Is Coming!',
+      message: "We're preparing our portfolio to showcase our latest work. Stay tuned!",
+    },
+  },
   { id: 'careers', label: 'Careers', href: ROUTES.careers },
   { id: 'contact', label: 'Contact', href: '/#contact' },
 ];
 
-/** Footer navigation links (same entries as the header). */
-export const FOOTER_NAV_LINKS: NavLink[] = [...HEADER_NAV_LINKS];
+/** Footer navigation links (same entries as the header, but always navigating). */
+export const FOOTER_NAV_LINKS: NavLink[] = HEADER_NAV_LINKS.map(
+  ({ comingSoon: _comingSoon, ...link }) => link
+);

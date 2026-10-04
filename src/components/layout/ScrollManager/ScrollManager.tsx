@@ -8,7 +8,6 @@ interface ScrollManagerProps {
   children: ReactNode;
 }
 
-
 const ScrollManager = ({ children }: ScrollManagerProps) => {
   useHashScroll();
 
