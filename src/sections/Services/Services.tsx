@@ -27,7 +27,7 @@ const Services = () => {
               <SectionTitle
                 title={content.title}
                 description={content.description}
-                align="left"
+                align="center"
                 id="services-title"
               />
 

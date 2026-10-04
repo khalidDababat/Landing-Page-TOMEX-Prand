@@ -109,3 +109,14 @@ export interface Job {
   responsibilities: string[];
   application: JobApplication;
 }
+
+export interface TeamMember {
+  id: number | string;
+  name: string;
+  position: string;
+  description: string;
+  /** Path of the profile picture under `public/`. */
+  image: string;
+  /** LinkedIn profile URL; an empty string hides the LinkedIn button. */
+  linkedin: string;
+}

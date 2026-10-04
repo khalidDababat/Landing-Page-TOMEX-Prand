@@ -118,5 +118,23 @@
       }
     }
    
-  ]
+  ],
+  "team": [
+  {
+    "id": 1,
+    "name": "Eng. Khaled Dababat",
+    "position": "Full Stack Developer",
+    "description": "He is a Computer Systems Engineer and Frontend Developer focused on building modern, user-friendly web applications using React.",
+    "image": "/images/team/Khalid_Dababat.png",
+    "linkedin": "https://www.linkedin.com/in/khalid-dababat"
+  },
+  {
+    "id": 2,
+    "name": "Eng. Ameen Dababat",
+    "position": "Full Stack Developer",
+    "description": "He is a Computer Systems Engineering graduate and Backend Developer with hands-on experience building scalable, secure, and maintainable backend systems . ",
+    "image": "/images/team/Ameen_Dababat.png",
+    "linkedin": "https://www.linkedin.com/in/ameendababat/?isSelfProfile=false"
+  }
+]
 }

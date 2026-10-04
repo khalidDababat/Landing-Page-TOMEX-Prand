@@ -1,4 +1,4 @@
-import type { Job, Project, ServicesContent } from '@/types';
+import type { Job, Project, ServicesContent, TeamMember } from '@/types';
 
 import { getResource } from './apiClient';
 
@@ -17,3 +17,7 @@ export const fetchCareers = (signal?: AbortSignal): Promise<Job[]> =>
 /** A single careers opportunity by id. */
 export const fetchJob = (id: string, signal?: AbortSignal): Promise<Job> =>
   getResource<Job>(`jobs/${id}`, signal);
+
+/** Home page team member collection. */
+export const fetchTeam = (signal?: AbortSignal): Promise<TeamMember[]> =>
+  getResource<TeamMember[]>('team', signal);

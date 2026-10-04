@@ -1,0 +1,23 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.team {
+  @include section-spacing;
+}
+
+.inner {
+  @include container;
+}
+
+.cards {
+  @include grid(3, $grid-gap);
+  margin-top: $spacing-2xl;
+
+  @include down('laptop') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include down('tablet') {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
