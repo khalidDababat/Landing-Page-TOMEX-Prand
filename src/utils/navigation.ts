@@ -7,20 +7,14 @@ export const ROUTES = {
   careers: '/careers',
 } as const;
 
+/** Link labels live in the dictionary (`t.nav[id]`), so they follow the active language. */
 export const HEADER_NAV_LINKS: NavLink[] = [
-  { id: 'about', label: 'About', href: '/#about' },
-  { id: 'services', label: 'Services', href: '/#services' },
-  {
-    id: 'portfolio',
-    label: 'Portfolio',
-    href: ROUTES.portfolio,
-    comingSoon: {
-      title: 'Something Great Is Coming!',
-      message: "We're preparing our portfolio to showcase our latest work. Stay tuned!",
-    },
-  },
-  { id: 'careers', label: 'Careers', href: ROUTES.careers },
-  { id: 'contact', label: 'Contact', href: '/#contact' },
+  { id: 'about', href: '/#about' },
+  { id: 'services', href: '/#services' },
+  // The portfolio is not public yet: the header shows a "coming soon" toast instead of navigating.
+  { id: 'portfolio', href: ROUTES.portfolio, comingSoon: true },
+  { id: 'careers', href: ROUTES.careers },
+  { id: 'contact', href: '/#contact' },
 ];
 
 /** Footer navigation links (same entries as the header, but always navigating). */

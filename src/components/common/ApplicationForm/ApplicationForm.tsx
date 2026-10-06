@@ -5,6 +5,8 @@ import type { ChangeEvent, FormEvent, ReactNode } from 'react';
 
 import Button from '@/components/common/Button/Button';
 import ButtonLink from '@/components/common/Button/ButtonLink';
+import { format } from '@/i18n/format';
+import { useTranslations } from '@/i18n/I18nProvider';
 import type { ApplicationFormErrors, ApplicationFormValues, Job } from '@/types';
 import { COUNTRY_CODES, DEFAULT_COUNTRY_CODE } from '@/utils/countryCodes';
 import { ROUTES } from '@/utils/navigation';
@@ -73,6 +75,8 @@ interface ApplicationFormProps {
  * required CV. Submission is not connected yet, so Submit stays disabled.
  */
 const ApplicationForm = ({ job }: ApplicationFormProps) => {
+  const t = useTranslations();
+  const a = t.application;
   const isEducation = job.type === 'Education';
   const [values, setValues] = useState<ApplicationFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<ApplicationFormErrors>({});
@@ -102,7 +106,7 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const validationErrors = validateApplication(job.type, values);
+    const validationErrors = validateApplication(job.type, values, t.validation);
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
@@ -132,14 +136,14 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
-      <h2 className={styles.heading}>Apply for this opportunity</h2>
+      <h2 className={styles.heading}>{a.heading}</h2>
 
-      <Field name="fullName" label="Full Name" required error={errors.fullName}>
+      <Field name="fullName" label={a.fullName} required error={errors.fullName}>
         <input
           {...controlProps('fullName')}
           type="text"
           autoComplete="name"
-          placeholder={isEducation ? 'First and last name' : 'John Doe'}
+          placeholder={isEducation ? a.fullNamePlaceholderEducation : a.fullNamePlaceholder}
           value={values.fullName}
           onChange={handleChange}
           required
@@ -147,12 +151,13 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
       </Field>
 
       {!isEducation && (
-        <Field name="email" label="Email Address" required error={errors.email}>
+        <Field name="email" label={a.email} required error={errors.email}>
           <input
             {...controlProps('email')}
             type="email"
             autoComplete="email"
-            placeholder="john@company.com"
+            dir="ltr"
+            placeholder={a.emailPlaceholder}
             value={values.email}
             onChange={handleChange}
             required
@@ -160,24 +165,20 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
         </Field>
       )}
 
-      <Field
-        name="phone"
-        label={isEducation ? 'WhatsApp Phone Number' : 'Phone Number'}
-        required
-        error={errors.phone}
-      >
+      <Field name="phone" label={isEducation ? a.whatsapp : a.phone} required error={errors.phone}>
         <div className={styles.phoneRow}>
           {isEducation && (
             <select
               className={`${styles.input} ${styles.countryCode}`}
               name="countryCode"
-              aria-label="Country code"
+              aria-label={a.countryCode}
+              dir="ltr"
               value={values.countryCode}
               onChange={handleChange}
             >
-              {COUNTRY_CODES.map(({ code, label }) => (
+              {COUNTRY_CODES.map((code) => (
                 <option key={code} value={code}>
-                  {label}
+                  {`${t.countries[code] ?? code} (${code})`}
                 </option>
               ))}
             </select>
@@ -186,7 +187,8 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
             {...controlProps('phone')}
             type="tel"
             autoComplete="tel-national"
-            placeholder="59 123 4567"
+            dir="ltr"
+            placeholder={a.phonePlaceholder}
             value={values.phone}
             onChange={handleChange}
             required
@@ -195,12 +197,12 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
       </Field>
 
       {isEducation && (
-        <Field name="level" label="Current Level" required error={errors.level}>
+        <Field name="level" label={a.level} required error={errors.level}>
           <select {...controlProps('level')} value={values.level} onChange={handleChange} required>
-            <option value="">Select your level</option>
+            <option value="">{a.levelPlaceholder}</option>
             {LEVELS.map((level) => (
               <option key={level} value={level}>
-                {level}
+                {a.levels[level]}
               </option>
             ))}
           </select>
@@ -208,7 +210,7 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
       )}
 
       {isEducation ? (
-        <Field name="about" label="Tell Us About Yourself" required error={errors.about}>
+        <Field name="about" label={a.about} required error={errors.about}>
           <textarea
             {...controlProps('about')}
             className={`${styles.input} ${styles.textarea}`}
@@ -219,7 +221,7 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
           />
         </Field>
       ) : (
-        <Field name="coverLetter" label="Cover Letter" error={errors.coverLetter}>
+        <Field name="coverLetter" label={a.coverLetter} error={errors.coverLetter}>
           <textarea
             {...controlProps('coverLetter')}
             className={`${styles.input} ${styles.textarea}`}
@@ -232,9 +234,9 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
 
       <Field
         name="cv"
-        label={isEducation ? 'CV / Supporting Attachments' : 'CV / Resume'}
+        label={isEducation ? a.cvSupporting : a.cvResume}
         required={!isEducation}
-        hint={`PDF, DOC or DOCX, up to ${MAX_FILE_SIZE_MB} MB.`}
+        hint={format(a.fileHint, { size: MAX_FILE_SIZE_MB })}
         error={errors.cv}
       >
         <input
@@ -248,16 +250,16 @@ const ApplicationForm = ({ job }: ApplicationFormProps) => {
 
       {!SUBMISSIONS_OPEN && (
         <p className={styles.notice} role="status">
-          Online applications are not open yet. This form will be enabled soon.
+          {a.notice}
         </p>
       )}
 
       <div className={styles.actions}>
         <Button type="submit" disabled={!SUBMISSIONS_OPEN}>
-          {isEducation ? 'Submit' : 'Submit Your Application'}
+          {isEducation ? a.submitEducation : a.submit}
         </Button>
         <ButtonLink variant="accent" href={ROUTES.careers}>
-          Back
+          {a.back}
         </ButtonLink>
       </div>
     </form>

@@ -4,7 +4,7 @@
 .toast {
   background-color: $color-surface-raised;
   border: 1px solid $color-border-strong;
-  border-left: 4px solid $color-mint;
+  border-inline-start: 4px solid $color-mint;
   border-radius: $radius-md;
   box-shadow: $shadow-card;
   color: $color-white;

@@ -7,6 +7,7 @@ import ErrorState from '@/components/common/AsyncContent/ErrorState';
 import Badge from '@/components/common/Badge/Badge';
 import Button from '@/components/common/Button/Button';
 import ButtonLink from '@/components/common/Button/ButtonLink';
+import { getTranslations } from '@/i18n/server';
 import { ApiError } from '@/services/apiClient';
 import { fetchJob } from '@/services/contentService';
 import type { Job } from '@/types';
@@ -24,8 +25,9 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
     notFound();
   }
 
+  const t = await getTranslations();
   let job: Job | null = null;
-  let errorMessage: string | null = null;
+  let failed = false;
   let missing = false;
 
   try {
@@ -34,7 +36,7 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
     if (cause instanceof ApiError && cause.status === 404) {
       missing = true;
     } else {
-      errorMessage = cause instanceof Error ? cause.message : 'Something went wrong.';
+      failed = true;
     }
   }
 
@@ -42,11 +44,11 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
     notFound();
   }
 
-  if (errorMessage !== null) {
+  if (failed) {
     return (
-      <section className={styles.details} aria-label="Opportunity details">
+      <section className={styles.details} aria-label={t.careerDetails.regionLabel}>
         <div className={styles.inner}>
-          <ErrorState message={errorMessage} />
+          <ErrorState />
         </div>
       </section>
     );
@@ -54,9 +56,9 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
 
   if (!job || !job.title) {
     return (
-      <section className={styles.details} aria-label="Opportunity details">
+      <section className={styles.details} aria-label={t.careerDetails.regionLabel}>
         <div className={styles.inner}>
-          <EmptyState message="This opportunity is not available." />
+          <EmptyState message={t.careerDetails.notAvailable} />
         </div>
       </section>
     );
@@ -69,7 +71,7 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.meta}>
-            <Badge>{job.type}</Badge>
+            <Badge>{t.jobTypes[job.type] ?? job.type}</Badge>
             <span className={styles.location}>
               <LocationOnOutlinedIcon className={styles.locationIcon} fontSize="inherit" />
               {job.location}
@@ -83,21 +85,21 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
         <div className={styles.content}>
           <section aria-labelledby="career-description">
             <h2 className={styles.sectionTitle} id="career-description">
-              Job Description
+              {t.careerDetails.jobDescription}
             </h2>
             <p className={styles.text}>{job.description}</p>
           </section>
 
           <section aria-labelledby="career-about">
             <h2 className={styles.sectionTitle} id="career-about">
-              About the Role
+              {t.careerDetails.aboutRole}
             </h2>
             <p className={styles.text}>{job.aboutRole}</p>
           </section>
 
           <section aria-labelledby="career-responsibilities">
             <h2 className={styles.sectionTitle} id="career-responsibilities">
-              Job Responsibilities
+              {t.careerDetails.responsibilities}
             </h2>
             <ul className={styles.list}>
               {job.responsibilities.map((item) => (
@@ -110,9 +112,9 @@ const CareerDetails = async ({ id }: CareerDetailsProps) => {
         {target.kind === 'internal' ? (
           <ApplicationForm job={job} />
         ) : target.kind === 'external' ? (
-          <ButtonLink href={target.href}>Apply Now</ButtonLink>
+          <ButtonLink href={target.href}>{t.careers.applyNow}</ButtonLink>
         ) : (
-          <Button disabled>Apply Unavailable</Button>
+          <Button disabled>{t.careers.applyUnavailable}</Button>
         )}
       </div>
     </section>

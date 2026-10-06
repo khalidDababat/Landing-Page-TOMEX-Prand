@@ -3,6 +3,7 @@
 import AsyncContent from '@/components/common/AsyncContent/AsyncContent';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import { useFetch } from '@/hooks/useFetch';
+import { useLocale, useTranslations } from '@/i18n/I18nProvider';
 import { fetchServices } from '@/services/contentService';
 import { iconRegistry } from '@/utils/iconRegistry';
 
@@ -10,23 +11,19 @@ import styles from './Services.module.scss';
 
 /** Services section: image-led service cards fetched from the API. */
 const Services = () => {
-  const { data, status, error, retry } = useFetch(fetchServices);
+  const t = useTranslations();
+  const locale = useLocale();
+  const { data, status, retry } = useFetch(fetchServices);
 
   return (
     <section className={styles.services} id="services" aria-labelledby="services-title">
       <div className={styles.inner}>
-        <AsyncContent
-          status={status}
-          error={error}
-          data={data}
-          onRetry={retry}
-          loadingLabel="Loading services"
-        >
+        <AsyncContent status={status} data={data} onRetry={retry} loadingLabel={t.services.loading}>
           {(content) => (
             <>
               <SectionTitle
-                title={content.title}
-                description={content.description}
+                title={t.services.title}
+                description={t.services.description}
                 align="center"
                 id="services-title"
               />
@@ -41,7 +38,7 @@ const Services = () => {
                         <img
                           className={styles.image}
                           src={service.image.src}
-                          alt={service.image.alt}
+                          alt={service.image.alt[locale]}
                           loading="lazy"
                           width={368}
                           height={170}
@@ -54,8 +51,8 @@ const Services = () => {
                           <Icon className={styles.icon} fontSize="inherit" />
                         </span>
 
-                        <h3 className={styles.cardTitle}>{service.title}</h3>
-                        <p className={styles.cardDescription}>{service.description}</p>
+                        <h3 className={styles.cardTitle}>{service.title[locale]}</h3>
+                        <p className={styles.cardDescription}>{service.description[locale]}</p>
                       </div>
                     </li>
                   );

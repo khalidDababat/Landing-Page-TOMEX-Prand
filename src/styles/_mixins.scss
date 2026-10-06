@@ -117,13 +117,17 @@ $breakpoints: (
   &::after {
     content: '';
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     bottom: -4px;
     width: 100%;
     height: 2px;
     background-color: #2dd598;
     transform: scaleX(0);
     transform-origin: left center;
+
+    :global([dir='rtl']) & {
+      transform-origin: right center;
+    }
     transition: transform 0.25s ease;
   }
 

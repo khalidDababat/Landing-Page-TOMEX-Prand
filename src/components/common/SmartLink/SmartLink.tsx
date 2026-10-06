@@ -6,7 +6,8 @@ import type { NavLink } from '@/types';
 interface SmartLinkProps {
   link: NavLink;
   className?: string;
-  children?: ReactNode;
+  /** The translated label. */
+  children: ReactNode;
 }
 
 /**
@@ -16,7 +17,7 @@ interface SmartLinkProps {
  */
 const SmartLink = ({ link, className, children }: SmartLinkProps) => (
   <Link className={className} href={link.href}>
-    {children ?? link.label}
+    {children}
   </Link>
 );
 

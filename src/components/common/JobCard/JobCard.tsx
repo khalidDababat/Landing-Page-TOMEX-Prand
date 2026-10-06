@@ -10,17 +10,23 @@ import styles from './JobCard.module.scss';
 
 interface JobCardProps {
   job: Job;
+  /** Translated texts, passed in so the card works from both Server and Client parents. */
+  labels: {
+    type: string;
+    applyNow: string;
+    applyUnavailable: string;
+  };
 }
 
 /** Single open opportunity row: type, location, title and apply action (internal page or external form). */
-const JobCard = ({ job }: JobCardProps) => {
+const JobCard = ({ job, labels }: JobCardProps) => {
   const target = getApplyTarget(job);
 
   return (
     <li className={styles.card}>
       <div className={styles.details}>
         <p className={styles.meta}>
-          <Badge>{job.type}</Badge>
+          <Badge>{labels.type}</Badge>
 
           <span className={styles.location}>
             <LocationOnOutlinedIcon className={styles.locationIcon} fontSize="inherit" />
@@ -33,11 +39,11 @@ const JobCard = ({ job }: JobCardProps) => {
 
       {target.kind === 'unavailable' ? (
         <Button variant="accent" disabled>
-          Apply Unavailable
+          {labels.applyUnavailable}
         </Button>
       ) : (
         <ButtonLink variant="accent" href={target.href}>
-          Apply Now
+          {labels.applyNow}
         </ButtonLink>
       )}
     </li>

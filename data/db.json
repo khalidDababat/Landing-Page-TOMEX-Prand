@@ -1,36 +1,61 @@
 {
   "services": {
-    "title": "Our Services",
-    "description": "Smart digital solutions built around your ideas and ambitions.",
     "items": [
       {
         "id": "web-software-dev",
         "icon": "laptop",
-        "title": "Web & Software Development",
-        "description": "From business websites to custom web applications, we design and develop reliable, responsive, and scalable digital solutions tailored to your needs.",
+        "title": {
+          "en": "Web & Software Development",
+          "ar": "تطوير المواقع والبرمجيات"
+        },
+        "description": {
+          "en": "From business websites to custom web applications, we design and develop reliable, responsive, and scalable digital solutions tailored to your needs.",
+          "ar": "من مواقع الشركات إلى تطبيقات الويب المخصصة، نصمم ونطور حلولًا رقمية موثوقة ومتجاوبة وقابلة للتوسع بما يتناسب مع احتياجاتك."
+        },
         "image": {
           "src": "/images/service-web-software.jpg",
-          "alt": "Developer workstation with code on a wide monitor"
+          "alt": {
+            "en": "Developer workstation with code on a wide monitor",
+            "ar": "محطة عمل مطور تعرض الأكواد على شاشة واسعة"
+          }
         }
       },
       {
         "id": "tech-education",
         "icon": "book",
-        "title": "Tech Education",
-        "description": "Practical programming courses, specialized workshops, and hands-on learning experiences designed to help individuals and teams develop real-world technical skills.",
+        "title": {
+          "en": "Tech Education",
+          "ar": "التعليم التقني"
+        },
+        "description": {
+          "en": "Empowering aspiring developers through practical programming courses, personalized lessons, and technical guidance to help them build strong skills and grow with confidence.",
+          "ar": "نمكّن الطموحين لتعلّم البرمجة من خلال دورات عملية، ودروس مخصصة، وإرشاد تقني يساعدهم على بناء مهارات قوية والتطور بثقة."
+        },
         "image": {
           "src": "/images/service-tech-education.jpg",
-          "alt": "Training room"
+          "alt": {
+            "en": "Training room",
+            "ar": "قاعة تدريب"
+          }
         }
       },
       {
         "id": "ai-content-generation",
         "icon": "ai",
-        "title": "AI Content Generation",
-        "description": "Creative video production, AI-generated visuals, and intelligent content solutions that help brands communicate their ideas in innovative ways.",
+        "title": {
+          "en": "AI Content Generation",
+          "ar": "إنشاء المحتوى بالذكاء الاصطناعي"
+        },
+        "description": {
+          "en": "Creative video production, AI-generated visuals, and intelligent content solutions that help brands communicate their ideas in innovative ways.",
+          "ar": "إنتاج فيديو إبداعي، ومرئيات مولّدة بالذكاء الاصطناعي، وحلول محتوى ذكية تساعد العلامات التجارية على إيصال أفكارها بطرق مبتكرة."
+        },
         "image": {
           "src": "/images/service-ai-content.jpg",
-          "alt": "AI-generated artwork"
+          "alt": {
+            "en": "AI-generated artwork",
+            "ar": "عمل فني مولّد بالذكاء الاصطناعي"
+          }
         }
       }
     ]

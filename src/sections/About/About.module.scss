@@ -9,35 +9,6 @@
   @include container;
 }
 
-.cards {
-  @include grid(3, $grid-gap);
-  margin-top: $spacing-3xl;
-
-  @include down('laptop') {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @include down('tablet') {
-    grid-template-columns: minmax(0, 1fr);
-    margin-top: $spacing-2xl;
-  }
-}
-
-.card {
-  @include card-surface;
-  display: flex;
-  flex-direction: column;
-  padding: $spacing-xl;
-  transition:
-    border-color $transition-base,
-    transform $transition-base;
-
-  &:hover {
-    border-color: rgba($color-mint, 0.35);
-    transform: translateY(-2px);
-  }
-}
-
 .iconBox {
   @include flex-center;
   width: 56px;
@@ -46,6 +17,21 @@
   background-color: rgba($color-mint, 0.12);
   color: $color-mint;
   font-size: 1.5rem;
+}
+.intro {
+  max-width: 100%;
+  margin: 4rem auto 3rem;
+  text-align: center;
+  background-color: #062b4b;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.introText {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #fff;
 }
 
 .icon {
@@ -86,6 +72,12 @@
   @include down('tablet') {
     padding: $spacing-xl;
   }
+
+  &:hover {
+    border-color: rgba($color-mint, 0.35);
+    transform: translateY(-2px);
+    transition: 0.3s ease;
+  }
 }
 
 /** Soft mint glow, mirrored between the two cards as in the reference. */
@@ -101,12 +93,12 @@
 
 .vision::after {
   top: -40px;
-  right: 40px;
+  inset-inline-end: 40px;
 }
 
 .mission::after {
   bottom: -40px;
-  left: -20px;
+  inset-inline-start: -20px;
 }
 
 .pillarTitle {

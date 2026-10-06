@@ -68,6 +68,11 @@
 }
 
 .linkIcon {
+  // Mirrored in RTL so the arrow keeps pointing forward.
+  :global([dir='rtl']) & {
+    transform: scaleX(-1);
+  }
+
   font-size: 0.95rem;
 }
 

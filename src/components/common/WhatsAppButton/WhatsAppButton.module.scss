@@ -5,7 +5,7 @@
   @include flex-center;
   @include focus-ring;
   position: fixed;
-  right: 1.5rem;
+  inset-inline-end: 1.5rem;
   bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
   z-index: $z-whatsapp;
   width: 56px;
@@ -27,7 +27,7 @@
   }
 
   @include down('tablet') {
-    right: 1rem;
+    inset-inline-end: 1rem;
     bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
     width: 48px;
     height: 48px;

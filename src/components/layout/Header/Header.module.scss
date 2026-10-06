@@ -68,7 +68,7 @@
   padding: 0;
   border: 0;
   background: none;
-  text-align: left;
+  text-align: start;
 }
 
 .menuToggle {
@@ -117,5 +117,12 @@
 
   &:hover {
     color: #77e6bd;
+  }
+}
+
+// Language switcher: header bar only; hidden below the laptop breakpoint (burger menu takes over).
+.desktopSwitcher {
+  @include down('laptop') {
+    display: none;
   }
 }

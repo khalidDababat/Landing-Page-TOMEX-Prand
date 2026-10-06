@@ -2,7 +2,8 @@
 
 import type { ReactNode } from 'react';
 
-import { showComingSoonToast } from '@/utils/toast';
+import { useTranslations } from '@/i18n/I18nProvider';
+import { showComingSoon } from '@/utils/toast';
 
 interface ComingSoonButtonProps {
   children: ReactNode;
@@ -10,10 +11,23 @@ interface ComingSoonButtonProps {
 }
 
 /** Client-side button that shows the "coming soon" toast, usable from Server Components. */
-const ComingSoonButton = ({ children, className }: ComingSoonButtonProps) => (
-  <button className={className} type="button" onClick={showComingSoonToast}>
-    {children}
-  </button>
-);
+const ComingSoonButton = ({ children, className }: ComingSoonButtonProps) => {
+  const t = useTranslations();
+
+  return (
+    <button
+      className={className}
+      type="button"
+      onClick={() =>
+        showComingSoon({
+          title: t.comingSoon.caseStudyTitle,
+          message: t.comingSoon.caseStudyMessage,
+        })
+      }
+    >
+      {children}
+    </button>
+  );
+};
 
 export default ComingSoonButton;

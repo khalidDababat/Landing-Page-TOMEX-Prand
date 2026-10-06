@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
 
+import { getTranslations } from '@/i18n/server';
 import CareerDetails from '@/views/CareerDetails/CareerDetails';
 
-export const metadata: Metadata = {
-  title: 'Careers | TOMEX Technology',
-  description: 'Opportunity details and application at TOMEX Technology.',
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations();
+
+  return {
+    title: t.meta.careersTitle,
+    description: t.meta.careersDescription,
+  };
 };
 
 interface CareerDetailsPageProps {

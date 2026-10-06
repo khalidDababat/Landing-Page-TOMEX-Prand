@@ -1,7 +1,9 @@
+import type { Dictionary } from '@/i18n/en';
 import type { ContactFormValues, ContactSubmitResult } from '@/types';
 
 export const sendContactMessage = async (
-  values: ContactFormValues
+  values: ContactFormValues,
+  messages: Dictionary['contact']
 ): Promise<ContactSubmitResult> => {
   try {
     const response = await fetch('/api/contact', {
@@ -15,20 +17,20 @@ export const sendContactMessage = async (
     if (!response.ok) {
       return {
         success: false,
-        message: 'Failed to send message. Please try again.',
+        message: messages.sendFailed,
       };
     }
 
     return {
       success: true,
-      message: 'Your message has been sent successfully!',
+      message: messages.success,
     };
   } catch (error) {
     console.error('Contact submission error:', error);
 
     return {
       success: false,
-      message: 'Something went wrong. Please try again.',
+      message: messages.genericError,
     };
   }
 };

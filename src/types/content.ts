@@ -19,17 +19,30 @@ export interface ComingSoonNotice {
   message: string;
 }
 
+/** Keys of `t.nav` in the i18n dictionary. */
+export type NavId = 'about' | 'services' | 'portfolio' | 'careers' | 'contact';
+
 export interface NavLink {
-  id: string;
-  label: string;
+  id: NavId;
   href: string;
-  /** When set, the header shows this toast instead of navigating. */
-  comingSoon?: ComingSoonNotice;
+  /** When true, the header shows a "coming soon" toast instead of navigating. */
+  comingSoon?: boolean;
+}
+
+/** Content the API returns in every supported language (keys match `Locale`). */
+export interface LocalizedText {
+  en: string;
+  ar: string;
 }
 
 export interface ImageAsset {
   src: string;
   alt: string;
+}
+
+export interface LocalizedImageAsset {
+  src: string;
+  alt: LocalizedText;
 }
 
 export interface FeatureCard {
@@ -39,8 +52,12 @@ export interface FeatureCard {
   description: string;
 }
 
-export interface ServiceCard extends FeatureCard {
-  image: ImageAsset;
+export interface ServiceCard {
+  id: string;
+  icon: IconName;
+  title: LocalizedText;
+  description: LocalizedText;
+  image: LocalizedImageAsset;
 }
 
 export interface AboutContent {
@@ -50,8 +67,6 @@ export interface AboutContent {
 }
 
 export interface ServicesContent {
-  title: string;
-  description: string;
   items: ServiceCard[];
 }
 
