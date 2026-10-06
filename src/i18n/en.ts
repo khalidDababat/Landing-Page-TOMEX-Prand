@@ -86,7 +86,7 @@ export const en = {
     title: 'Got a Project in Mind?',
     description:
       "Let's discuss how our technology and design expertise can accelerate your business objectives.",
-    location: 'Global Remote',
+    location: 'Palestine, Remote',
     nameLabel: 'Name',
     namePlaceholder: 'John Doe',
     emailLabel: 'Email',

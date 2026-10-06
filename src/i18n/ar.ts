@@ -87,7 +87,7 @@ export const ar: Dictionary = {
   contact: {
     title: 'هل لديك مشروع في بالك؟',
     description: 'دعنا نناقش كيف يمكن لخبرتنا في التكنولوجيا والتصميم أن تسرّع تحقيق أهداف عملك.',
-    location: 'عن بُعد حول العالم',
+    location: 'فلسطين، العمل عن بعد',
     nameLabel: 'الاسم',
     namePlaceholder: 'محمد أحمد',
     emailLabel: 'البريد الإلكتروني',
