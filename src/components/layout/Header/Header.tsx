@@ -1,22 +1,54 @@
 'use client';
 
 import { useState } from 'react';
+import type { MouseEvent } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import LanguageSwitcher from '@/components/common/LanguageSwitcher/LanguageSwitcher';
-import SmartLink from '@/components/common/SmartLink/SmartLink';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import { scrollToHash } from '@/hooks/useHashScroll';
 import { useTranslations } from '@/i18n/I18nProvider';
 import { HEADER_NAV_LINKS, ROUTES } from '@/utils/navigation';
 import { showComingSoon } from '@/utils/toast';
 
 import styles from './Header.module.scss';
 
+interface NavLinksProps {
+  linkClass: string;
+  /** Called after a nav link is clicked (the mobile menu closes itself). */
+  onNavigate?: () => void;
+}
+
 /** Shared nav links rendered in both desktop and mobile menus. */
-const NavLinks = ({ linkClass }: { linkClass: string }) => {
+const NavLinks = ({ linkClass, onNavigate }: NavLinksProps) => {
   const t = useTranslations();
+  const pathname = usePathname();
+
+  /**
+   * Next.js does nothing when a `/#section` link points at the current URL, and
+   * its pushState never fires `hashchange`, so on the home page we scroll
+   * ourselves — every click, even when the hash is already in the URL.
+   */
+  const handleLinkClick = (event: MouseEvent<HTMLAnchorElement>, href: string): void => {
+    onNavigate?.();
+
+    const { hash } = new URL(href, window.location.href);
+
+    if (!hash || pathname !== ROUTES.home) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (window.location.hash !== hash) {
+      window.history.pushState(null, '', href);
+    }
+
+    scrollToHash(hash);
+  };
 
   return (
     <>
@@ -36,9 +68,13 @@ const NavLinks = ({ linkClass }: { linkClass: string }) => {
               {t.nav[link.id]}
             </button>
           ) : (
-            <SmartLink className={linkClass} link={link}>
+            <Link
+              className={linkClass}
+              href={link.href}
+              onClick={(event) => handleLinkClick(event, link.href)}
+            >
               {t.nav[link.id]}
-            </SmartLink>
+            </Link>
           )}
         </li>
       ))}
@@ -88,7 +124,7 @@ const Header = () => {
         hidden={!isMenuOpen}
       >
         <ul className={styles.mobileNavList}>
-          <NavLinks linkClass={styles.mobileNavLink} />
+          <NavLinks linkClass={styles.mobileNavLink} onNavigate={() => setIsMenuOpen(false)} />
         </ul>
       </nav>
     </header>

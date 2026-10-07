@@ -8,7 +8,7 @@ const TARGET_TIMEOUT_MS = 5000;
  * Tries to scroll to the hash target, retrying while the section is still
  * being fetched, then gives up after `TARGET_TIMEOUT_MS`.
  */
-const scrollToHash = (hash: string): void => {
+export const scrollToHash = (hash: string): void => {
   const scrollToTarget = (): boolean => {
     const target = document.querySelector(hash);
 
