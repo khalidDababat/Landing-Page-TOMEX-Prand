@@ -1,16 +1,19 @@
+'use client';
+
 import Button from '@/components/common/Button/Button';
 import { useContactForm } from '@/hooks/useContactForm';
-import type { ContactContent } from '@/types';
+import { useTranslations } from '@/i18n/I18nProvider';
 import { iconRegistry } from '@/utils/iconRegistry';
 
 import styles from './Contact.module.scss';
 
-interface ContactProps {
-  content: ContactContent;
-}
+const EmailIcon = iconRegistry.email;
+const PhoneIcon = iconRegistry.phone;
+const LocationIcon = iconRegistry.location;
 
 /** Contact section: project enquiry copy, contact details and the message form. */
-const Contact = ({ content }: ContactProps) => {
+const Contact = () => {
+  const t = useTranslations();
   const { values, errors, status, feedback, handleChange, handleSubmit } = useContactForm();
   const isSubmitting = status === 'submitting';
 
@@ -20,29 +23,28 @@ const Contact = ({ content }: ContactProps) => {
         <div className={styles.panel}>
           <div className={styles.info}>
             <h2 className={styles.title} id="contact-title">
-              {content.title}
+              {t.contact.title}
             </h2>
 
-            <p className={styles.description}>{content.description}</p>
+            <p className={styles.description}>{t.contact.description}</p>
 
             <ul className={styles.details}>
-              {content.details.map((detail) => {
-                const Icon = iconRegistry[detail.icon];
-
-                return (
-                  <li className={styles.detail} key={detail.id}>
-                    <Icon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
-
-                    {detail.href ? (
-                      <a className={styles.detailLink} href={detail.href}>
-                        {detail.value}
-                      </a>
-                    ) : (
-                      <span>{detail.value}</span>
-                    )}
-                  </li>
-                );
-              })}
+              <li className={styles.detail}>
+                <EmailIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
+                <a className={styles.detailLink} href="mailto:khaliddababat@gmail.com">
+                  khaliddababat@gmail.com
+                </a>
+              </li>
+              <li className={styles.detail}>
+                <PhoneIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
+                <a className={styles.detailLink} href="tel:+972597088178" dir="ltr">
+                  +972 59-708-8178
+                </a>
+              </li>
+              <li className={styles.detail}>
+                <LocationIcon className={styles.detailIcon} fontSize="inherit" aria-hidden="true" />
+                <span>{t.contact.location}</span>
+              </li>
             </ul>
           </div>
 
@@ -50,7 +52,7 @@ const Contact = ({ content }: ContactProps) => {
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="contact-name">
-                  Name
+                  {t.contact.nameLabel}
                 </label>
                 <input
                   className={styles.input}
@@ -58,11 +60,11 @@ const Contact = ({ content }: ContactProps) => {
                   name="name"
                   type="text"
                   autoComplete="name"
-                  placeholder="John Doe"
+                  placeholder={t.contact.namePlaceholder}
                   value={values.name}
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? 'contact-name-error' : undefined}
-                  onChange={(event) => handleChange('name', event.target.value)}
+                  onChange={handleChange}
                 />
                 {errors.name && (
                   <span className={styles.error} id="contact-name-error">
@@ -73,7 +75,7 @@ const Contact = ({ content }: ContactProps) => {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="contact-email">
-                  Email
+                  {t.contact.emailLabel}
                 </label>
                 <input
                   className={styles.input}
@@ -81,11 +83,12 @@ const Contact = ({ content }: ContactProps) => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="john@company.com"
+                  dir="ltr"
+                  placeholder={t.contact.emailPlaceholder}
                   value={values.email}
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={errors.email ? 'contact-email-error' : undefined}
-                  onChange={(event) => handleChange('email', event.target.value)}
+                  onChange={handleChange}
                 />
                 {errors.email && (
                   <span className={styles.error} id="contact-email-error">
@@ -96,18 +99,18 @@ const Contact = ({ content }: ContactProps) => {
 
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="contact-message">
-                  Message
+                  {t.contact.messageLabel}
                 </label>
                 <textarea
                   className={styles.textarea}
                   id="contact-message"
                   name="message"
                   rows={4}
-                  placeholder="Tell us about your project..."
+                  placeholder={t.contact.messagePlaceholder}
                   value={values.message}
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'contact-message-error' : undefined}
-                  onChange={(event) => handleChange('message', event.target.value)}
+                  onChange={handleChange}
                 />
                 {errors.message && (
                   <span className={styles.error} id="contact-message-error">
@@ -117,7 +120,7 @@ const Contact = ({ content }: ContactProps) => {
               </div>
 
               <Button className={styles.submit} type="submit" fullWidth disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? t.contact.sending : t.contact.send}
               </Button>
 
               <p

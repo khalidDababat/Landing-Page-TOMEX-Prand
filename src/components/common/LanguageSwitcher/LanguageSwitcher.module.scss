@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+// Segmented EN / AR control. `dir="ltr"` keeps EN on the left in both languages.
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba($color-mint, 0.45);
+  border-radius: $radius-pill;
+  background-color: $color-surface;
+}
+
+.option {
+  @include focus-ring;
+  min-width: 44px;
+  padding: 0.4rem 0.9rem;
+  border: 0;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: $color-text-muted;
+  font-family: inherit;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    transform $transition-fast;
+
+  &:hover:not(.active):not(:disabled) {
+    background-color: rgba($color-mint, 0.14);
+    color: $color-mint;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    cursor: progress;
+  }
+
+  @include down('tablet') {
+    min-height: 40px;
+  }
+}
+
+.active {
+  background-color: $color-mint;
+  color: $color-navy;
+  cursor: default;
+}

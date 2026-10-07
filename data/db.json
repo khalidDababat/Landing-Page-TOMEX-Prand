@@ -1,148 +1,64 @@
 {
-  "hero": {
-    "title": "We Turn Ideas Into Technology.",
-    "description": "Empowering modern enterprises by combining cutting-edge technology, precision design, and robust AI solutions to solve complex challenges.",
-    "primaryCta": {
-      "label": "Hire Us",
-      "href": "#contact"
-    },
-    "secondaryCta": {
-      "label": "Explore Our Services",
-      "href": "#services"
-    },
-    "image": {
-      "src": "/images/hero-ai-visual.jpg",
-      "alt": "Abstract glowing low-poly network representing AI and emerging technology"
-    }
-  },
-  "about": {
-    "title": "About TOMEX",
-    "cards": [
-      {
-        "id": "web-software",
-        "icon": "code",
-        "title": "Web & Software",
-        "description": "Building scalable, secure, and high-performance digital platforms tailored for enterprise needs."
-      },
-      {
-        "id": "programming-education",
-        "icon": "school",
-        "title": "Programming Education",
-        "description": "Empowering the next generation of developers with industry-leading curriculum and mentorship."
-      },
-      {
-        "id": "ai-powered-video",
-        "icon": "video",
-        "title": "AI-Powered Video",
-        "description": "Leveraging artificial intelligence to automate and elevate digital content creation workflows."
-      }
-    ],
-    "pillars": [
-      {
-        "id": "vision",
-        "icon": "vision",
-        "title": "Our Vision",
-        "description": "To be the leading global partner for enterprises seeking intelligent, design-driven technology solutions that redefine industry standards and drive sustainable innovation."
-      },
-      {
-        "id": "mission",
-        "icon": "rocket",
-        "title": "Our Mission",
-        "description": "We deliver precision-engineered software, transformative educational experiences, and advanced AI content solutions, ensuring our clients stay ahead in a rapidly evolving digital landscape."
-      }
-    ]
-  },
   "services": {
-    "title": "Our Services",
-    "description": "Comprehensive technology solutions designed for scale and impact.",
     "items": [
       {
         "id": "web-software-dev",
         "icon": "laptop",
-        "title": "Web & Software Dev",
-        "description": "Custom enterprise applications, robust backend architectures, and intuitive frontend experiences built with modern frameworks.",
+        "title": {
+          "en": "Web & Software Development",
+          "ar": "تطوير المواقع والبرمجيات"
+        },
+        "description": {
+          "en": "From business websites to custom web applications, we design and develop reliable, responsive, and scalable digital solutions tailored to your needs.",
+          "ar": "من مواقع الشركات إلى تطبيقات الويب المخصصة، نصمم ونطور حلولًا رقمية موثوقة ومتجاوبة وقابلة للتوسع بما يتناسب مع احتياجاتك."
+        },
         "image": {
           "src": "/images/service-web-software.jpg",
-          "alt": "Developer workstation with code on a wide monitor"
+          "alt": {
+            "en": "Developer workstation with code on a wide monitor",
+            "ar": "محطة عمل مطور تعرض الأكواد على شاشة واسعة"
+          }
         }
       },
       {
         "id": "tech-education",
         "icon": "book",
-        "title": "Tech Education",
-        "description": "Corporate training, specialized bootcamps, and upskilling programs designed to build high-performing engineering teams.",
+        "title": {
+          "en": "Tech Education",
+          "ar": "التعليم التقني"
+        },
+        "description": {
+          "en": "Empowering aspiring developers through practical programming courses, personalized lessons, and technical guidance to help them build strong skills and grow with confidence.",
+          "ar": "نمكّن الطموحين لتعلّم البرمجة من خلال دورات عملية، ودروس مخصصة، وإرشاد تقني يساعدهم على بناء مهارات قوية والتطور بثقة."
+        },
         "image": {
           "src": "/images/service-tech-education.jpg",
-          "alt": "Training room with developers learning at workstations"
+          "alt": {
+            "en": "Training room",
+            "ar": "قاعة تدريب"
+          }
         }
       },
       {
         "id": "ai-content-generation",
         "icon": "ai",
-        "title": "AI Content Generation",
-        "description": "Automated video production, intelligent editing pipelines, and dynamic content generation powered by advanced machine learning models.",
+        "title": {
+          "en": "AI Content Generation",
+          "ar": "إنشاء المحتوى بالذكاء الاصطناعي"
+        },
+        "description": {
+          "en": "Creative video production, AI-generated visuals, and intelligent content solutions that help brands communicate their ideas in innovative ways.",
+          "ar": "إنتاج فيديو إبداعي، ومرئيات مولّدة بالذكاء الاصطناعي، وحلول محتوى ذكية تساعد العلامات التجارية على إيصال أفكارها بطرق مبتكرة."
+        },
         "image": {
           "src": "/images/service-ai-content.jpg",
-          "alt": "Analytics wall showing an AI network graph and data panels"
+          "alt": {
+            "en": "AI-generated artwork",
+            "ar": "عمل فني مولّد بالذكاء الاصطناعي"
+          }
         }
       }
     ]
-  },
-  "contact": {
-    "title": "Got a Project in Mind?",
-    "description": "Let's discuss how our technology and design expertise can accelerate your business objectives.",
-    "details": [
-      {
-        "id": "email",
-        "icon": "email",
-        "value": "TOMIXinfo@gmail.com",
-        "href": "mailto:TOMIXinfo@gmail.com"
-      },
-      {
-        "id": "location",
-        "icon": "location",
-        "value": "Global Remote"
-      }
-    ]
-  },
-  "footer": {
-    "description": "Technology, Design, and AI solutions for the modern enterprise.",
-    "navigationTitle": "Navigation",
-    "connectTitle": "Connect",
-    "socialLinks": [
-      {
-        "id": "facebook",
-        "icon": "facebook",
-        "label": "Facebook",
-        "href": "https://www.facebook.com"
-      },
-      {
-        "id": "instagram",
-        "icon": "instagram",
-        "label": "Instagram",
-        "href": "https://www.instagram.com"
-      },
-      {
-        "id": "linkedin",
-        "icon": "linkedin",
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com"
-      },
-      {
-        "id": "youtube",
-        "icon": "youtube",
-        "label": "YouTube",
-        "href": "https://www.youtube.com"
-      }
-    ]
-  },
-  "portfolio": {
-    "title": "Our Portfolio",
-    "description": "Showcasing our precision in technology and creative design."
-  },
-  "careers": {
-    "title": "Open Opportunities",
-    "description": "Find your next role at TOMEX."
   },
   "projects": [
     {
@@ -181,7 +97,11 @@
         "src": "/images/project-aura.jpg",
         "alt": "Three smartphones on a desk showing the Aura productivity app"
       },
-      "tags": ["iOS", "Android", "React Native"],
+      "tags": [
+        "iOS",
+        "Android",
+        "React Native"
+      ],
       "linkLabel": null
     }
   ],
@@ -190,7 +110,56 @@
       "id": 1,
       "type": "Education",
       "location": "Remote",
-      "title": "JAVA Course OOP"
+      "title": "JAVA Course OOP",
+      "description": "Learn object-oriented programming with Java through a hands-on, project-based course designed for beginners and early developers.",
+      "aboutRole": "This course walks you from Java fundamentals to core OOP principles. You will practise with guided exercises and build small projects with feedback from experienced TOMEX instructors.",
+      "responsibilities": [
+        "Attend the live online sessions and complete weekly exercises",
+        "Build and present a small Java project using OOP principles",
+        "Participate in code reviews and apply the feedback",
+        "Keep a consistent learning pace and ask questions early"
+      ],
+      "application": {
+        "method": "internal",
+        "externalUrl": null
+      }
+    },
+    {
+      "id": 2,
+      "type": "Education",
+      "location": "Remote",
+      "title": "Front End Developer HTML/CSS/JAVASCRIPT",
+      "description": "Build modern, responsive websites from scratch in this practical front-end course covering HTML, CSS and JavaScript.",
+      "aboutRole": "You will learn how to structure pages with semantic HTML, style them with modern CSS and add interactivity with JavaScript, finishing with a portfolio-ready website.",
+      "responsibilities": [
+        "Attend the live online sessions and complete practical assignments",
+        "Build responsive layouts that work on mobile and desktop",
+        "Develop interactive features using JavaScript",
+        "Publish a final project and present it to the group"
+      ],
+      "application": {
+        "method": "internal",
+        "externalUrl": null
+      }
     }
-  ]
+   
+  ],
+  "team": [
+  {
+    "id": 1,
+    "name": "Eng. Khaled Dababat",
+    "position": "Full Stack Developer",
+    "description": "He is a Computer Systems Engineer and Frontend Developer focused on building modern, user-friendly web applications using React.",
+    "image": "/images/team/Khalid_Dababat.png",
+    "linkedin": "https://www.linkedin.com/in/khalid-dababat"
+  },
+  {
+    "id": 2,
+    "name": "Eng. Ameen Dababat",
+    "position": "Full Stack Developer",
+    "description": "He is a Computer Systems Engineering graduate and Backend Developer with hands-on experience building scalable, secure, and maintainable backend systems . ",
+    "image": "/images/team/Ameen_Dababat.png",
+    "linkedin": "https://www.linkedin.com/in/ameendababat/?isSelfProfile=false"
+  }
+]
 }

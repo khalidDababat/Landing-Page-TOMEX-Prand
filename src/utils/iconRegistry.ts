@@ -8,6 +8,7 @@ import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -16,7 +17,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import type { IconName, SocialIconName } from '@/types';
 
-/** Content icons, keyed by the `icon` field used in `src/data/db.json`. */
+/** Content icons, keyed by the `icon` field used in `data/db.json`. */
 export const iconRegistry: Record<IconName, SvgIconComponent> = {
   code: CodeIcon,
   school: SchoolIcon,
@@ -27,6 +28,7 @@ export const iconRegistry: Record<IconName, SvgIconComponent> = {
   book: MenuBookIcon,
   ai: SmartToyIcon,
   email: MailOutlineIcon,
+  phone: PhoneOutlinedIcon,
   location: LocationOnOutlinedIcon,
 };
 
@@ -36,4 +38,5 @@ export const socialIconRegistry: Record<SocialIconName, SvgIconComponent> = {
   instagram: InstagramIcon,
   linkedin: LinkedInIcon,
   youtube: YouTubeIcon,
+  email: MailOutlineIcon,
 };

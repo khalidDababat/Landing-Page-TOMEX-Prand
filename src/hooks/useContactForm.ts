@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
+import { useTranslations } from '@/i18n/I18nProvider';
 import { sendContactMessage } from '@/services/contactService';
 import type { ContactFormErrors, ContactFormStatus, ContactFormValues } from '@/types';
 import { validateContactForm } from '@/utils/validation';
@@ -10,62 +11,52 @@ const INITIAL_VALUES: ContactFormValues = {
   message: '',
 };
 
-interface UseContactFormResult {
-  values: ContactFormValues;
-  errors: ContactFormErrors;
-  status: ContactFormStatus;
-  feedback: string;
-  handleChange: (field: keyof ContactFormValues, value: string) => void;
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
-}
+const isFormField = (name: string): name is keyof ContactFormValues => name in INITIAL_VALUES;
 
 /** Controlled contact form state with client-side validation. */
-export const useContactForm = (): UseContactFormResult => {
+export const useContactForm = () => {
+  const t = useTranslations();
   const [values, setValues] = useState<ContactFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<ContactFormStatus>('idle');
-  const [feedback, setFeedback] = useState<string>('');
+  const [feedback, setFeedback] = useState('');
 
-  const handleChange = useCallback((field: keyof ContactFormValues, value: string): void => {
-    setValues((previous) => ({ ...previous, [field]: value }));
-    setErrors((previous) => {
-      if (!previous[field]) {
-        return previous;
-      }
+  /** Updates the field named by the input's `name` and clears that field's error. */
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
 
-      const next = { ...previous };
-      delete next[field];
-      return next;
-    });
-  }, []);
+    if (!isFormField(name)) {
+      return;
+    }
 
-  const handleSubmit = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
-      event.preventDefault();
+    setValues((previous) => ({ ...previous, [name]: value }));
+    setErrors((previous) => ({ ...previous, [name]: undefined }));
+  };
 
-      const validationErrors = validateContactForm(values);
-      setErrors(validationErrors);
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-      if (Object.keys(validationErrors).length > 0) {
-        setStatus('error');
-        setFeedback('Please fix the highlighted fields.');
-        return;
-      }
+    const validationErrors = validateContactForm(values, t.validation);
+    setErrors(validationErrors);
 
-      setStatus('submitting');
-      setFeedback('');
+    if (Object.keys(validationErrors).length > 0) {
+      setStatus('error');
+      setFeedback(t.contact.fixFields);
+      return;
+    }
 
-      const result = await sendContactMessage(values);
+    setStatus('submitting');
+    setFeedback('');
 
-      setStatus(result.success ? 'success' : 'error');
-      setFeedback(result.message);
+    const result = await sendContactMessage(values, t.contact);
 
-      if (result.success) {
-        setValues(INITIAL_VALUES);
-      }
-    },
-    [values]
-  );
+    setStatus(result.success ? 'success' : 'error');
+    setFeedback(result.message);
+
+    if (result.success) {
+      setValues(INITIAL_VALUES);
+    }
+  };
 
   return { values, errors, status, feedback, handleChange, handleSubmit };
 };

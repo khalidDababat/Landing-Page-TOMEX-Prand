@@ -1,13 +1,15 @@
+'use client';
+
 import type { ReactNode } from 'react';
 
 import Button from '@/components/common/Button/Button';
 import type { FetchStatus } from '@/hooks/useFetch';
+import { useTranslations } from '@/i18n/I18nProvider';
 
 import styles from './AsyncContent.module.scss';
 
 interface AsyncContentProps<T> {
   status: FetchStatus;
-  error: string | null;
   data: T | null;
   onRetry: () => void;
   /** Rendered once the request succeeded and returned usable data. */
@@ -20,22 +22,23 @@ const isEmpty = (data: unknown): boolean => Array.isArray(data) && data.length =
 
 /**
  * Renders the shared loading, error and empty states around fetched content,
- * so pages only describe their success case.
+ * so pages only describe their success case. Texts default to the active language.
  */
 const AsyncContent = <T,>({
   status,
-  error,
   data,
   onRetry,
   children,
-  loadingLabel = 'Loading',
-  emptyMessage = 'Nothing to show yet.',
+  loadingLabel,
+  emptyMessage,
 }: AsyncContentProps<T>) => {
+  const t = useTranslations();
+
   if (status === 'loading') {
     return (
       <div className={styles.state} role="status" aria-live="polite">
         <span className={styles.spinner} aria-hidden="true" />
-        <p className={styles.message}>{loadingLabel}…</p>
+        <p className={styles.message}>{loadingLabel ?? t.states.loading}…</p>
       </div>
     );
   }
@@ -43,9 +46,9 @@ const AsyncContent = <T,>({
   if (status === 'error' || !data) {
     return (
       <div className={styles.state} role="alert">
-        <p className={styles.message}>{error ?? 'We could not load this content.'}</p>
-        <p className={styles.hint}>Make sure the API is running: npm run server</p>
-        <Button onClick={onRetry}>Try again</Button>
+        <p className={styles.message}>{t.states.loadError}</p>
+        <p className={styles.hint}>{t.states.apiHint}</p>
+        <Button onClick={onRetry}>{t.states.retry}</Button>
       </div>
     );
   }
@@ -53,7 +56,7 @@ const AsyncContent = <T,>({
   if (isEmpty(data)) {
     return (
       <div className={styles.state}>
-        <p className={styles.message}>{emptyMessage}</p>
+        <p className={styles.message}>{emptyMessage ?? t.states.nothing}</p>
       </div>
     );
   }

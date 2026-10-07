@@ -9,16 +9,30 @@ export type IconName =
   | 'book'
   | 'ai'
   | 'email'
+  | 'phone'
   | 'location';
 
-export type SocialIconName = 'facebook' | 'instagram' | 'linkedin' | 'youtube';
+export type SocialIconName = 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'email';
+
+export interface ComingSoonNotice {
+  title: string;
+  message: string;
+}
+
+/** Keys of `t.nav` in the i18n dictionary. */
+export type NavId = 'about' | 'services' | 'portfolio' | 'careers' | 'contact';
 
 export interface NavLink {
-  id: string;
-  label: string;
+  id: NavId;
   href: string;
-  /** Renders a "Soon" toast instead of navigating. */
+  /** When true, the header shows a "coming soon" toast instead of navigating. */
   comingSoon?: boolean;
+}
+
+/** Content the API returns in every supported language (keys match `Locale`). */
+export interface LocalizedText {
+  en: string;
+  ar: string;
 }
 
 export interface ImageAsset {
@@ -26,17 +40,9 @@ export interface ImageAsset {
   alt: string;
 }
 
-export interface CallToAction {
-  label: string;
-  href: string;
-}
-
-export interface HeroContent {
-  title: string;
-  description: string;
-  primaryCta: CallToAction;
-  secondaryCta: CallToAction;
-  image: ImageAsset;
+export interface LocalizedImageAsset {
+  src: string;
+  alt: LocalizedText;
 }
 
 export interface FeatureCard {
@@ -46,8 +52,12 @@ export interface FeatureCard {
   description: string;
 }
 
-export interface ServiceCard extends FeatureCard {
-  image: ImageAsset;
+export interface ServiceCard {
+  id: string;
+  icon: IconName;
+  title: LocalizedText;
+  description: LocalizedText;
+  image: LocalizedImageAsset;
 }
 
 export interface AboutContent {
@@ -57,8 +67,6 @@ export interface AboutContent {
 }
 
 export interface ServicesContent {
-  title: string;
-  description: string;
   items: ServiceCard[];
 }
 
@@ -82,32 +90,10 @@ export interface SocialLink {
   href: string;
 }
 
-export interface FooterContent {
-  description: string;
-  navigationTitle: string;
-  connectTitle: string;
-  socialLinks: SocialLink[];
-  copyright: string;
-}
-
-/** Copy shown on the home page. */
-export interface HomeContent {
-  hero: HeroContent;
-  about: AboutContent;
-  services: ServicesContent;
-  contact: ContactContent;
-}
-
-/** Heading and supporting line shared by the sub pages. */
-export interface PageMeta {
-  title: string;
-  description: string;
-}
-
 export type ProjectVariant = 'overlay' | 'stacked' | 'split';
 
 export interface Project {
-  id: string;
+  id: number | string;
   /** Drives which bento layout the card renders. */
   variant: ProjectVariant;
   category: string;
@@ -118,10 +104,34 @@ export interface Project {
   linkLabel: string | null;
 }
 
+/** Opportunity types; Education opportunities may apply through an external form. */
+export type JobType = 'Education' | 'Internship' | 'Role';
+
+export interface JobApplication {
+  /** "internal" opens the TOMEX application form; "external" opens `externalUrl` (Education only). */
+  method: 'internal' | 'external';
+  /** HTTPS link of the external form, or null when the method is "internal". */
+  externalUrl: string | null;
+}
+
 export interface Job {
-  id: string;
-  /** Opportunity type shown as a badge, e.g. "Job" or "Intern". */
-  type: string;
+  id: number | string;
+  type: JobType;
   location: string;
   title: string;
+  description: string;
+  aboutRole: string;
+  responsibilities: string[];
+  application: JobApplication;
+}
+
+export interface TeamMember {
+  id: number | string;
+  name: string;
+  position: string;
+  description: string;
+  /** Path of the profile picture under `public/`. */
+  image: string;
+  /** LinkedIn profile URL; an empty string hides the LinkedIn button. */
+  linkedin: string;
 }
