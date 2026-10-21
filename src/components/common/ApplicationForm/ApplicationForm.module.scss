@@ -1,0 +1,112 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-page;
+
+  @include down('mobile') {
+    padding: $spacing-lg;
+  }
+}
+
+.heading {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  min-width: 0;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+}
+
+.input {
+  width: 100%;
+  padding: 0.7rem 0.875rem;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-sm;
+  background-color: transparent;
+  font-size: $font-size-md;
+  color: $color-text-muted;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $color-placeholder;
+  }
+
+  &:hover {
+    border-color: rgba($color-mint, 0.4);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: #ff8a8a;
+  }
+
+  // Native option lists ignore the transparent background.
+  option {
+    background-color: $color-page;
+    color: $color-white;
+  }
+}
+
+.textarea {
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.phoneRow {
+  display: flex;
+  gap: $spacing-xs;
+
+  @include down('mobile') {
+    flex-direction: column;
+  }
+}
+
+.countryCode {
+  flex: 0 0 auto;
+  width: 14rem;
+
+  @include down('mobile') {
+    width: 100%;
+  }
+}
+
+.hint {
+  font-size: $font-size-sm;
+  color: $color-text-subtle;
+}
+
+.error {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: #ff8a8a;
+}
+
+.notice {
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid rgba($color-mint, 0.35);
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}

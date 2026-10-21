@@ -1,3 +1,6 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -11,7 +14,7 @@
 
 .left {
   align-items: flex-start;
-  text-align: left;
+  text-align: start;
 }
 
 .title {

@@ -1,12 +1,20 @@
+import { createElement } from 'react';
 import { toast } from 'react-toastify';
 
-/** Message shown for navigation links that are not live yet. */
-export const COMING_SOON_MESSAGE = 'Soon';
+import ToastContent from '@/components/common/Toast/ToastContent';
+import styles from '@/components/common/Toast/ToastContent.module.scss';
+import type { ComingSoonNotice } from '@/types';
 
-/** Shared id so repeated clicks refresh the toast instead of stacking copies. */
-const COMING_SOON_TOAST_ID = 'coming-soon';
-
-/** Notifies the visitor that a destination is not available yet. */
-export const showComingSoonToast = (): void => {
-  toast(COMING_SOON_MESSAGE, { toastId: COMING_SOON_TOAST_ID });
+/** Shows a titled "coming soon" toast. Repeated calls with the same title refresh instead of stacking. */
+export const showComingSoon = ({ title, message }: ComingSoonNotice): void => {
+  toast(createElement(ToastContent, { title, message }), {
+    toastId: title,
+    position: 'top-center',
+    autoClose: 10000,
+    icon: false,
+    className: styles.toast,
+    progressClassName: styles.progress,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
 };

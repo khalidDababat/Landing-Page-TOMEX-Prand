@@ -1,48 +1,32 @@
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Link from 'next/link';
 
-import Button from '@/components/common/Button/Button';
-import type { HeroContent } from '@/types';
+import { getTranslations } from '@/i18n/server';
 
 import styles from './Hero.module.scss';
 
-interface HeroProps {
-  content: HeroContent;
-}
+/** Hero section: headline, calls to action  */
+const Hero = async () => {
+  const t = await getTranslations();
 
-/** Hero section: headline, supporting copy, calls to action and brand visual. */
-const Hero = ({ content }: HeroProps) => (
+  return (
     <section className={styles.hero} id="hero" aria-labelledby="hero-title">
       <div className={styles.inner}>
         <div className={styles.content}>
+          <div className={styles.logo}>
+            <img src="/images/logo.png" alt="" />
+          </div>
           <h1 className={styles.title} id="hero-title">
-            {content.title}
+            {t.hero.title}
           </h1>
-
-          <p className={styles.description}>{content.description}</p>
+          <p className={styles.description}>{t.hero.tagline}</p>
 
           <div className={styles.actions}>
-            <Button href={content.primaryCta.href}>
-              {content.primaryCta.label}
-              <ArrowForwardIcon className={styles.buttonIcon} fontSize="inherit" />
-            </Button>
-
-            <Button href={content.secondaryCta.href} variant="outline">
-              {content.secondaryCta.label}
-            </Button>
+            <Link href="#services">{t.hero.cta}</Link>
           </div>
         </div>
-
-        <figure className={styles.figure}>
-          <img
-            className={styles.image}
-            src={content.image.src}
-            alt={content.image.alt}
-            width={560}
-            height={600}
-          />
-        </figure>
       </div>
     </section>
-);
+  );
+};
 
 export default Hero;

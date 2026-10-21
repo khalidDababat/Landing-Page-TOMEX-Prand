@@ -1,3 +1,6 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .header {
   position: sticky;
   top: 0;
@@ -22,15 +25,15 @@
 }
 
 .logoMark {
-  width: 22px;
-  height: 22px;
+  width: 80px;
+  height: 60px;
 }
 
 .logoText {
-  font-size: $font-size-md;
+  font-size: 18px;
   font-weight: $font-weight-semibold;
   letter-spacing: 0.06em;
-  color: $color-white;
+  color: #2dd598;
 }
 
 .desktopNav {
@@ -46,6 +49,7 @@
 }
 
 .navLink {
+  @include nav-link-hover;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
   color: $color-text;
@@ -57,6 +61,14 @@
   &:hover {
     color: $color-mint;
   }
+}
+
+// Makes a <button> nav item look identical to the link items.
+.navButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: start;
 }
 
 .menuToggle {
@@ -96,6 +108,7 @@
 }
 
 .mobileNavLink {
+  //@include nav-link-hover;
   display: block;
   padding-block: $spacing-sm;
   font-size: $font-size-md;
@@ -103,6 +116,13 @@
   color: $color-text;
 
   &:hover {
-    color: $color-mint;
+    color: #77e6bd;
+  }
+}
+
+// Language switcher: header bar only; hidden below the laptop breakpoint (burger menu takes over).
+.desktopSwitcher {
+  @include down('laptop') {
+    display: none;
   }
 }

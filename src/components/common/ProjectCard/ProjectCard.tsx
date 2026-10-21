@@ -1,21 +1,20 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import Badge from '@/components/common/Badge/Badge';
+import ComingSoonButton from '@/components/common/ComingSoonButton/ComingSoonButton';
 import type { Project } from '@/types';
 
 import styles from './ProjectCard.module.scss';
 
 interface ProjectCardProps {
   project: Project;
-  /** Invoked by the optional case-study link. */
-  onOpenLink: () => void;
 }
 
 /**
  * Portfolio card. One component covers all three bento shapes — the layout is
  * chosen by `project.variant` rather than by duplicating the markup.
  */
-const ProjectCard = ({ project, onOpenLink }: ProjectCardProps) => {
+const ProjectCard = ({ project }: ProjectCardProps) => {
   const media = (
     <div className={styles.media}>
       <img
@@ -46,10 +45,10 @@ const ProjectCard = ({ project, onOpenLink }: ProjectCardProps) => {
       )}
 
       {project.linkLabel && (
-        <button className={styles.link} type="button" onClick={onOpenLink}>
+        <ComingSoonButton className={styles.link}>
           {project.linkLabel}
           <ArrowForwardIcon className={styles.linkIcon} fontSize="inherit" />
-        </button>
+        </ComingSoonButton>
       )}
     </div>
   );

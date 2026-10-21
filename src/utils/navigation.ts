@@ -7,22 +7,17 @@ export const ROUTES = {
   careers: '/careers',
 } as const;
 
-/**
- * Header navigation links.
- *
- * In-page anchors are absolute (`/#about`) so they resolve to the home page
- * section even when clicked from another route.
- */
+/** Link labels live in the dictionary (`t.nav[id]`), so they follow the active language. */
 export const HEADER_NAV_LINKS: NavLink[] = [
-  { id: 'about', label: 'About', href: '/#about' },
-  { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'portfolio', label: 'Portfolio', href: ROUTES.portfolio },
-  { id: 'careers', label: 'Careers', href: ROUTES.careers },
-  { id: 'contact', label: 'Contact', href: '/#contact' },
+  { id: 'about', href: '/#about' },
+  { id: 'services', href: '/#services' },
+  // The portfolio is not public yet: the header shows a "coming soon" toast instead of navigating.
+  { id: 'portfolio', href: ROUTES.portfolio, comingSoon: true },
+  { id: 'careers', href: ROUTES.careers },
+  { id: 'contact', href: '/#contact' },
 ];
 
-/** Footer navigation links: the header links plus the privacy policy entry. */
-export const FOOTER_NAV_LINKS: NavLink[] = [
-  ...HEADER_NAV_LINKS,
-  { id: 'privacy-policy', label: 'Privacy Policy', href: '#privacy-policy', comingSoon: true },
-];
+/** Footer navigation links (same entries as the header, but always navigating). */
+export const FOOTER_NAV_LINKS: NavLink[] = HEADER_NAV_LINKS.map(
+  ({ comingSoon: _comingSoon, ...link }) => link
+);

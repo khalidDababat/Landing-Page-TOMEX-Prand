@@ -1,0 +1,73 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.card {
+  @include card-surface;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: $spacing-2xl $spacing-xl;
+  text-align: center;
+  transition:
+    border-color $transition-base,
+    transform $transition-base,
+    box-shadow $transition-base;
+
+  &:hover {
+    border-color: rgba($color-mint, 0.35);
+    transform: translateY(-4px);
+    box-shadow: $shadow-card;
+  }
+}
+
+.photo {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 2px solid rgba($color-mint, 0.45);
+  object-fit: cover;
+}
+
+.name {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+}
+
+.description {
+  margin-top: $spacing-md;
+  @include body-text($font-size-base, $font-weight-regular, 1.75);
+}
+
+.linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: auto;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba($color-mint, 0.45);
+  border-radius: $radius-pill;
+  color: $color-mint;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  transition:
+    background-color $transition-base,
+    color $transition-base;
+  @include focus-ring;
+
+  &:hover {
+    background-color: $color-mint;
+    color: $color-navy;
+  }
+}
+
+.description + .linkedin {
+  margin-top: $spacing-lg;
+}
+
+.icon {
+  font-size: 1.25rem;
+}

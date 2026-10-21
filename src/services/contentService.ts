@@ -1,52 +1,19 @@
-import type {
-  AboutContent,
-  ContactContent,
-  FooterContent,
-  HeroContent,
-  HomeContent,
-  Job,
-  PageMeta,
-  Project,
-  ServicesContent,
-} from '@/types';
+import type { Job, Project, ServicesContent, TeamMember } from '@/types';
 
-import { getResource } from './apiClient';
+import data from '../../data/data.json';
 
-/** Home page copy, fetched in parallel from the individual endpoints. */
-export const fetchHomeContent = async (signal?: AbortSignal): Promise<HomeContent> => {
-  const [hero, about, services, contact] = await Promise.all([
-    getResource<HeroContent>('hero', signal),
-    getResource<AboutContent>('about', signal),
-    getResource<ServicesContent>('services', signal),
-    getResource<ContactContent>('contact', signal),
-  ]);
+/** Home page services section copy and cards. */
+export const fetchServices = async (): Promise<ServicesContent> => data.services as ServicesContent;
 
-  return { hero, about, services, contact };
-};
+/** Portfolio page project collection. */
+export const fetchPortfolio = async (): Promise<Project[]> => data.projects as Project[];
 
-export const fetchFooterContent = (signal?: AbortSignal): Promise<FooterContent> =>
-  getResource<FooterContent>('footer', signal);
+/** Careers page job collection. */
+export const fetchCareers = async (): Promise<Job[]> => data.jobs as Job[];
 
-/** Portfolio page heading plus its project collection. */
-export const fetchPortfolio = async (
-  signal?: AbortSignal
-): Promise<{ meta: PageMeta; projects: Project[] }> => {
-  const [meta, projects] = await Promise.all([
-    getResource<PageMeta>('portfolio', signal),
-    getResource<Project[]>('projects', signal),
-  ]);
+/** A single careers opportunity by id, or null when no job has that id. */
+export const fetchJob = async (id: string): Promise<Job | null> =>
+  (data.jobs as Job[]).find((job) => String(job.id) === id) ?? null;
 
-  return { meta, projects };
-};
-
-/** Careers page heading plus its job collection. */
-export const fetchCareers = async (
-  signal?: AbortSignal
-): Promise<{ meta: PageMeta; jobs: Job[] }> => {
-  const [meta, jobs] = await Promise.all([
-    getResource<PageMeta>('careers', signal),
-    getResource<Job[]>('jobs', signal),
-  ]);
-
-  return { meta, jobs };
-};
+/** Home page team member collection. */
+export const fetchTeam = async (): Promise<TeamMember[]> => data.team as TeamMember[];

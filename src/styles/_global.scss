@@ -31,6 +31,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Arabic: Cairo (loaded in the root layout) and no letter-spacing, which breaks Arabic joining.
+:root[dir='rtl'] body,
+:root[dir='rtl'] button,
+:root[dir='rtl'] input,
+:root[dir='rtl'] select,
+:root[dir='rtl'] textarea {
+  font-family: 'Cairo', 'Segoe UI', system-ui, sans-serif;
+}
+
+:root[dir='rtl'] * {
+  letter-spacing: 0 !important;
+}
+
 h1,
 h2,
 h3,
@@ -90,12 +103,17 @@ textarea {
   resize: vertical;
 }
 
-#root {
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 ::selection {
