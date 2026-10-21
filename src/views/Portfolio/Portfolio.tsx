@@ -1,29 +1,19 @@
 import EmptyState from '@/components/common/AsyncContent/EmptyState';
-import ErrorState from '@/components/common/AsyncContent/ErrorState';
 import ProjectCard from '@/components/common/ProjectCard/ProjectCard';
 import { getTranslations } from '@/i18n/server';
 import { fetchPortfolio } from '@/services/contentService';
-import type { Project } from '@/types';
 
 import styles from './Portfolio.module.scss';
 
-/** Portfolio page showing the project collection from the API (fetched on the server). */
+/** Portfolio page showing the project collection from the local content data. */
 const Portfolio = async () => {
   const t = await getTranslations();
-  let projects: Project[] | null = null;
-
-  try {
-    projects = await fetchPortfolio();
-  } catch {
-    projects = null;
-  }
+  const projects = await fetchPortfolio();
 
   return (
     <section className={styles.portfolio} aria-labelledby="portfolio-title">
       <div className={styles.inner}>
-        {!projects ? (
-          <ErrorState />
-        ) : projects.length === 0 ? (
+        {projects.length === 0 ? (
           <EmptyState message={t.portfolio.empty} />
         ) : (
           <>

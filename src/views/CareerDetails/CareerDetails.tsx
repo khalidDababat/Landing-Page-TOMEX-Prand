@@ -3,14 +3,11 @@ import { notFound } from 'next/navigation';
 
 import ApplicationForm from '@/components/common/ApplicationForm/ApplicationForm';
 import EmptyState from '@/components/common/AsyncContent/EmptyState';
-import ErrorState from '@/components/common/AsyncContent/ErrorState';
 import Badge from '@/components/common/Badge/Badge';
 import Button from '@/components/common/Button/Button';
 import ButtonLink from '@/components/common/Button/ButtonLink';
 import { getTranslations } from '@/i18n/server';
-import { ApiError } from '@/services/apiClient';
 import { fetchJob } from '@/services/contentService';
-import type { Job } from '@/types';
 import { getApplyTarget } from '@/utils/careers';
 
 import styles from './CareerDetails.module.scss';
@@ -19,42 +16,20 @@ interface CareerDetailsProps {
   id: string;
 }
 
-/** Details of one opportunity (fetched on the server) followed by its application form. */
+/** Details of one opportunity (from the local content data) followed by its application form. */
 const CareerDetails = async ({ id }: CareerDetailsProps) => {
   if (!/^\d+$/.test(id)) {
     notFound();
   }
 
   const t = await getTranslations();
-  let job: Job | null = null;
-  let failed = false;
-  let missing = false;
+  const job = await fetchJob(id);
 
-  try {
-    job = await fetchJob(id);
-  } catch (cause: unknown) {
-    if (cause instanceof ApiError && cause.status === 404) {
-      missing = true;
-    } else {
-      failed = true;
-    }
-  }
-
-  if (missing) {
+  if (!job) {
     notFound();
   }
 
-  if (failed) {
-    return (
-      <section className={styles.details} aria-label={t.careerDetails.regionLabel}>
-        <div className={styles.inner}>
-          <ErrorState />
-        </div>
-      </section>
-    );
-  }
-
-  if (!job || !job.title) {
+  if (!job.title) {
     return (
       <section className={styles.details} aria-label={t.careerDetails.regionLabel}>
         <div className={styles.inner}>

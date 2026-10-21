@@ -1,23 +1,15 @@
 import EmptyState from '@/components/common/AsyncContent/EmptyState';
-import ErrorState from '@/components/common/AsyncContent/ErrorState';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 import TeamMemberCard from '@/components/common/TeamMemberCard/TeamMemberCard';
 import { getTranslations } from '@/i18n/server';
 import { fetchTeam } from '@/services/contentService';
-import type { TeamMember } from '@/types';
 
 import styles from './Team.module.scss';
 
-/** Team section: static heading, member cards fetched from the API on the server. */
+/** Team section: static heading, member cards from the local content data. */
 const Team = async () => {
   const t = await getTranslations();
-  let members: TeamMember[] | null = null;
-
-  try {
-    members = await fetchTeam();
-  } catch {
-    members = null;
-  }
+  const members = await fetchTeam();
 
   return (
     <section className={styles.team} id="team" aria-labelledby="team-title">
@@ -29,9 +21,7 @@ const Team = async () => {
           id="team-title"
         />
 
-        {!members ? (
-          <ErrorState />
-        ) : members.length === 0 ? (
+        {members.length === 0 ? (
           <EmptyState message={t.team.empty} />
         ) : (
           <ul className={styles.cards}>

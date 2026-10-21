@@ -1,23 +1,19 @@
 import type { Job, Project, ServicesContent, TeamMember } from '@/types';
 
-import { getResource } from './apiClient';
+import data from '../../data/data.json';
 
 /** Home page services section copy and cards. */
-export const fetchServices = (signal?: AbortSignal): Promise<ServicesContent> =>
-  getResource<ServicesContent>('services', signal);
+export const fetchServices = async (): Promise<ServicesContent> => data.services as ServicesContent;
 
 /** Portfolio page project collection. */
-export const fetchPortfolio = (signal?: AbortSignal): Promise<Project[]> =>
-  getResource<Project[]>('projects', signal);
+export const fetchPortfolio = async (): Promise<Project[]> => data.projects as Project[];
 
 /** Careers page job collection. */
-export const fetchCareers = (signal?: AbortSignal): Promise<Job[]> =>
-  getResource<Job[]>('jobs', signal);
+export const fetchCareers = async (): Promise<Job[]> => data.jobs as Job[];
 
-/** A single careers opportunity by id. */
-export const fetchJob = (id: string, signal?: AbortSignal): Promise<Job> =>
-  getResource<Job>(`jobs/${id}`, signal);
+/** A single careers opportunity by id, or null when no job has that id. */
+export const fetchJob = async (id: string): Promise<Job | null> =>
+  (data.jobs as Job[]).find((job) => String(job.id) === id) ?? null;
 
 /** Home page team member collection. */
-export const fetchTeam = (signal?: AbortSignal): Promise<TeamMember[]> =>
-  getResource<TeamMember[]>('team', signal);
+export const fetchTeam = async (): Promise<TeamMember[]> => data.team as TeamMember[];

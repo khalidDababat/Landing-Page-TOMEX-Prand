@@ -1,8 +1,8 @@
 # TOMEX Landing Page
 
 Production-ready TOMEX site built with **Next.js (App Router)**, React, TypeScript, SCSS Modules
-and Material UI icons. The Home Services section and the Portfolio and Careers pages are served by **json-server**
-from `data/db.json`; Hero, About, Contact and the footer are static.
+and Material UI icons. The Home Services and Team sections and the Portfolio and Careers pages read their
+content from the local `data/data.json`; Hero, About, Contact and the footer are static.
 
 ## Tech stack
 
@@ -10,7 +10,7 @@ from `data/db.json`; Hero, About, Contact and the footer are static.
 | ---------- | ----------------------------------------------- |
 | Framework  | Next.js 16 (App Router) + React 19 + TypeScript |
 | Routing    | Next.js App Router (`src/app`)                  |
-| Data       | `json-server` (REST API over `db.json`)         |
+| Data       | Local `data/data.json` (imported server-side)   |
 | Styling    | SCSS Modules (component styles)                 |
 | Icons      | Material UI (`@mui/icons-material`)             |
 | Toasts     | `react-toastify`                                |
@@ -21,24 +21,19 @@ Component-specific styling lives entirely in `*.module.scss` files, with the des
 
 ## Getting started
 
-The Home (Services), Portfolio and Careers pages read from the API, so run **both processes**:
-
 ```bash
 npm install
-npm run dev:all
+npm run dev
 ```
 
-`dev:all` starts json-server on `http://localhost:3001` and Next.js on `http://localhost:3000`.
-To run them separately, use `npm run server` and `npm run dev` in two terminals.
+The site runs on `http://localhost:3000`; no separate content API is needed.
 
 ## Scripts
 
 | Script              | Description                               |
 | ------------------- | ----------------------------------------- |
-| `npm run dev:all`   | Start the API and the dev server together |
-| `npm run dev`       | Start the Next.js dev server only         |
+| `npm run dev`       | Start the Next.js dev server              |
 | `npm run start`     | Start the production server               |
-| `npm run server`    | Start json-server on port 3001            |
 | `npm run build`     | Production build                          |
 | `npm run lint`      | Run ESLint                                |
 | `npm run format`    | Format `src` with Prettier                |
@@ -48,9 +43,9 @@ To run them separately, use `npm run server` and `npm run dev` in two terminals.
 
 | Route        | Page      | Content source                         |
 | ------------ | --------- | -------------------------------------- |
-| `/`          | Home      | static, except Services (`services` API) |
-| `/portfolio` | Portfolio | `projects` (API)                       |
-| `/careers`   | Careers   | `jobs` (API)                           |
+| `/`          | Home      | static, except Services/Team (`services`, `team`) |
+| `/portfolio` | Portfolio | `projects`                             |
+| `/careers`   | Careers   | `jobs`                                 |
 
 Unknown routes render a standalone 404 page (`src/app/not-found.tsx`). In-page links use absolute hashes (`/#about`); `useHashScroll` scrolls to
 the anchored section after navigation, so anchors work from any page.
@@ -66,8 +61,8 @@ src/
 │   └── layout/         Header, Footer, ScrollManager (hash-scroll behaviour)
 ├── views/              Home, Portfolio, Careers (page implementations)
 ├── sections/           Hero, About, Services, Contact (composed by Home)
-├── hooks/              useFetch, useContactForm, useBodyScrollLock, useHashScroll
-├── services/           apiClient, contentService, contactService
+├── hooks/              useContactForm, useBodyScrollLock, useHashScroll
+├── services/           contentService, contactService
 ├── types/              Shared TypeScript interfaces
 ├── utils/              Icon registry, navigation links, toast helper, validation
 ├── styles/             _variables, _mixins, _global, main
@@ -77,21 +72,16 @@ src/
 ## Client vs Server components
 
 Server Components are the default. The `'use client'` boundary is limited to components that
-genuinely need it: `Header` (menu state & scroll lock), `Toast`, `ScrollManager`, the `Services` section and the
-`Portfolio`/`Careers` views (client-side `useFetch`), and the `Contact` section (form state).
+genuinely need it: `Header` (menu state & scroll lock), `Toast`, `ScrollManager`, and the `Contact` section
+(form state). Content-driven views and sections read their data on the server.
 
 ## Data layer
 
-- **`services/apiClient.ts`** — the only place that calls `fetch`. Owns the base URL
-  (`NEXT_PUBLIC_API_URL`), headers and the `ApiError` shape.
-- **`services/contentService.ts`** — typed fetchers per resource (`fetchServices`,
-  `fetchPortfolio`, `fetchCareers`).
-- **`hooks/useFetch.ts`** — generic hook returning `{ data, status, error, retry }`. Aborts
-  in-flight requests on unmount. Pages use it instead of implementing request state themselves.
-- **`components/common/AsyncContent`** — renders the shared loading spinner, the error state with
-  a retry button, and the empty state. Pages only describe their success case.
-
-`db.json` top-level keys become REST endpoints: `/services`, `/projects` and `/jobs`.
+- **`data/data.json`** — the single source of site content (`services`, `projects`, `jobs`, `team`).
+- **`services/contentService.ts`** — imports `data.json` and exposes typed getters per resource
+  (`fetchServices`, `fetchPortfolio`, `fetchCareers`, `fetchJob`, `fetchTeam`). Used from Server
+  Components only.
+- **`components/common/AsyncContent`** — the shared loading spinner and empty state.
 
 ## Reusable components
 

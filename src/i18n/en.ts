@@ -70,7 +70,6 @@ export const en = {
   services: {
     title: 'Our Services',
     description: 'Smart digital solutions built around your ideas and ambitions.',
-    loading: 'Loading services',
   },
 
   team: {
@@ -117,7 +116,6 @@ export const en = {
   careers: {
     title: 'Open Opportunities',
     description: 'Find your role Or Internship in TOMEX.',
-    loading: 'Loading opportunities',
     empty: 'There are no open roles right now.',
     applyNow: 'Apply Now',
     applyUnavailable: 'Apply Unavailable',
@@ -223,8 +221,6 @@ export const en = {
   states: {
     loading: 'Loading',
     nothing: 'Nothing to show yet.',
-    loadError: 'We could not load this content.',
-    apiHint: 'Make sure the API is running: npm run server',
     retry: 'Try again',
     retrying: 'Retrying…',
     pageError: 'Something went wrong while loading this page.',

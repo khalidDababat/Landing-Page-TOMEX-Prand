@@ -72,7 +72,6 @@ export const ar: Dictionary = {
   services: {
     title: 'خدماتنا',
     description: 'حلول رقمية ذكية مبنية حول أفكارك وطموحاتك.',
-    loading: 'جارٍ تحميل الخدمات',
   },
 
   team: {
@@ -118,7 +117,6 @@ export const ar: Dictionary = {
   careers: {
     title: 'الفرص المتاحة',
     description: 'اعثر على وظيفتك أو تدريبك في تومكس.',
-    loading: 'جارٍ تحميل الفرص',
     empty: 'لا توجد وظائف شاغرة حاليًا.',
     applyNow: 'قدّم الآن',
     applyUnavailable: 'التقديم غير متاح',
@@ -224,8 +222,6 @@ export const ar: Dictionary = {
   states: {
     loading: 'جارٍ التحميل',
     nothing: 'لا يوجد ما يمكن عرضه بعد.',
-    loadError: 'تعذّر تحميل هذا المحتوى.',
-    apiHint: 'تأكد من تشغيل واجهة البيانات: npm run server',
     retry: 'حاول مرة أخرى',
     retrying: 'جارٍ إعادة المحاولة…',
     pageError: 'حدث خطأ أثناء تحميل هذه الصفحة.',
