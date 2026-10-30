@@ -232,7 +232,7 @@ export const en = {
   },
 
   whatsapp: {
-    label: 'Chat with TOMEX on WhatsApp',
+    label: 'Chat with Us on WhatsApp',
     message: "Hello TOMEXtech, I'd like to enquire about your services.",
   },
 };

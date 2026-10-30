@@ -13,16 +13,16 @@ const Careers = async () => {
   return (
     <section className={styles.careers} aria-labelledby="careers-title">
       <div className={styles.inner}>
+        <header className={styles.header}>
+          <h1 className={styles.title} id="careers-title">
+            {t.careers.title}
+          </h1>
+          <p className={styles.description}>{t.careers.description}</p>
+        </header>
         {jobs.length === 0 ? (
           <EmptyState message={t.careers.empty} />
         ) : (
           <>
-            <header className={styles.header}>
-              <h1 className={styles.title} id="careers-title">
-                {t.careers.title}
-              </h1>
-              <p className={styles.description}>{t.careers.description}</p>
-            </header>
             <ul className={styles.list}>
               {jobs.map((job) => (
                 <JobCard

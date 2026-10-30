@@ -97,69 +97,27 @@
         "src": "/images/project-aura.jpg",
         "alt": "Three smartphones on a desk showing the Aura productivity app"
       },
-      "tags": [
-        "iOS",
-        "Android",
-        "React Native"
-      ],
+      "tags": ["iOS", "Android", "React Native"],
       "linkLabel": null
     }
   ],
-  "jobs": [
+  "jobs": [],
+  "team": [
     {
       "id": 1,
-      "type": "Education",
-      "location": "Remote",
-      "title": "JAVA Course OOP",
-      "description": "Learn object-oriented programming with Java through a hands-on, project-based course designed for beginners and early developers.",
-      "aboutRole": "This course walks you from Java fundamentals to core OOP principles. You will practise with guided exercises and build small projects with feedback from experienced TOMEX instructors.",
-      "responsibilities": [
-        "Attend the live online sessions and complete weekly exercises",
-        "Build and present a small Java project using OOP principles",
-        "Participate in code reviews and apply the feedback",
-        "Keep a consistent learning pace and ask questions early"
-      ],
-      "application": {
-        "method": "internal",
-        "externalUrl": null
-      }
+      "name": "Eng. Khaled Dababat",
+      "position": "Full Stack Developer | Frontend Developer",
+      "description": "He is a Computer Systems Engineer and Frontend Developer focused on building modern, user-friendly web applications using React.",
+      "image": "/images/team/Khalid_Dababat.png",
+      "linkedin": "https://www.linkedin.com/in/khalid-dababat"
     },
     {
       "id": 2,
-      "type": "Education",
-      "location": "Remote",
-      "title": "Front End Developer HTML/CSS/JAVASCRIPT",
-      "description": "Build modern, responsive websites from scratch in this practical front-end course covering HTML, CSS and JavaScript.",
-      "aboutRole": "You will learn how to structure pages with semantic HTML, style them with modern CSS and add interactivity with JavaScript, finishing with a portfolio-ready website.",
-      "responsibilities": [
-        "Attend the live online sessions and complete practical assignments",
-        "Build responsive layouts that work on mobile and desktop",
-        "Develop interactive features using JavaScript",
-        "Publish a final project and present it to the group"
-      ],
-      "application": {
-        "method": "internal",
-        "externalUrl": null
-      }
+      "name": "Eng. Ameen Dababat",
+      "position": "Full Stack Developer",
+      "description": "He is a Computer Systems Engineering graduate and Backend Developer with hands-on experience building scalable, secure, and maintainable backend systems . ",
+      "image": "/images/team/Ameen_Dababat.png",
+      "linkedin": "https://www.linkedin.com/in/ameendababat/?isSelfProfile=false"
     }
-   
-  ],
-  "team": [
-  {
-    "id": 1,
-    "name": "Eng. Khaled Dababat",
-    "position": "Full Stack Developer",
-    "description": "He is a Computer Systems Engineer and Frontend Developer focused on building modern, user-friendly web applications using React.",
-    "image": "/images/team/Khalid_Dababat.png",
-    "linkedin": "https://www.linkedin.com/in/khalid-dababat"
-  },
-  {
-    "id": 2,
-    "name": "Eng. Ameen Dababat",
-    "position": "Full Stack Developer",
-    "description": "He is a Computer Systems Engineering graduate and Backend Developer with hands-on experience building scalable, secure, and maintainable backend systems . ",
-    "image": "/images/team/Ameen_Dababat.png",
-    "linkedin": "https://www.linkedin.com/in/ameendababat/?isSelfProfile=false"
-  }
-]
+  ]
 }

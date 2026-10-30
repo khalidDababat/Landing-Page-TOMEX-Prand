@@ -21,6 +21,8 @@
 
 .message {
   @include body-text($font-size-md);
+  color: #2dd598;
+  font-size: 30px;
 }
 
 .hint {

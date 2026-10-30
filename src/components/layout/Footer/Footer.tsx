@@ -17,7 +17,7 @@ const SOCIAL_LINKS = [
   {
     id: 'instagram',
     icon: 'instagram' as const,
-    href: 'https://www.instagram.com/tomexcompany/?hl=en',
+    href: 'https://www.instagram.com/tomextech/?hl=en',
   },
   {
     id: 'youtube',
