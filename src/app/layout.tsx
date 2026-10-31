@@ -33,14 +33,6 @@ const RootLayout = async ({ children }: Readonly<{ children: ReactNode }>) => {
 
   return (
     <html lang={locale} dir={DIRECTIONS[locale]} data-scroll-behavior="smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body>
         <I18nProvider locale={locale} dictionary={getDictionary(locale)}>
           <Header />
